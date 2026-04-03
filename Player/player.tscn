@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d1oagnssopcyo"]
+
+[ext_resource type="Script" uid="uid://bok5tyd5u2dm" path="res://Player/Scripts/player_controller.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/camera.gd" id="2_4ntmi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
+
+[node name="Player" type="Node3D" unique_id=1904113224]
+
+[node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=580162055]
+script = ExtResource("1_l8h54")
+
+[node name="PlaceholderMesh" type="MeshInstance3D" parent="PlayerBody" unique_id=57317801]
+mesh = SubResource("CapsuleMesh_hvfyp")
+
+[node name="PlaceholderCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=345195676]
+shape = SubResource("CapsuleShape3D_l8h54")
+
+[node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2)
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1293427983 node_paths=PackedStringArray("target_follow", "target_look")]
+script = ExtResource("2_4ntmi")
+target_follow = NodePath("../PlayerBody/CameraSocket")
+target_look = NodePath("../PlayerBody")
+follow_speed = 20.0
