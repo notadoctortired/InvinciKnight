@@ -10,8 +10,8 @@
 size = Vector3(21, 1, 21)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_obos6"]
-vertices = PackedVector3Array(-10, 1.1, -10, -10, 1.1, 10, 10, 1.1, 10, 10, 1.1, -10)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-10, 1.1, -0.25, -2, 1.1, -0.25, -1.75, 1.1, -1.75, 0.25, 1.1, -2, 0.25, 1.1, -10, -10, 1.1, -10, 1.75, 1.1, -1.75, 2, 1.1, 0.5, 10, 1.1, 0.25, 10, 1.1, -10, -0.25, 1.1, 10, -0.5, 1.1, 2, -1.75, 1.1, 1.75, -10, 1.1, 10, 1.75, 1.1, 1.75, 10, 1.1, 10)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(6, 3, 4), PackedInt32Array(8, 7, 6), PackedInt32Array(4, 9, 6), PackedInt32Array(6, 9, 8), PackedInt32Array(12, 11, 10), PackedInt32Array(0, 1, 12), PackedInt32Array(10, 13, 12), PackedInt32Array(12, 13, 0), PackedInt32Array(14, 7, 8), PackedInt32Array(10, 11, 14), PackedInt32Array(8, 15, 14), PackedInt32Array(14, 15, 10)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_obos6"]
 size = Vector2(21, 21)
@@ -38,6 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Peasant" parent="." unique_id=252368505 instance=ExtResource("3_obos6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+speed = 4.0
+health = 20.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=217935255]
 navigation_mesh = SubResource("NavigationMesh_obos6")
@@ -45,3 +47,8 @@ navigation_mesh = SubResource("NavigationMesh_obos6")
 [node name="RegionOne" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=494417816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("PlaneMesh_obos6")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=740570022]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0.3, 0.20000002, -0.3)
+vertices = PackedVector3Array(0.8, 0, 1.8000001, 1.2, 0, -1, -1.5470138, 0, -1.4186101, -2, 0, 1.4)
+affect_navigation_mesh = true

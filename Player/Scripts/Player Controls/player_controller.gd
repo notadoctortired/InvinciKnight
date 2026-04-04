@@ -33,12 +33,15 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("rotate_left"):
 		rotate_y(-0.7853982)
 		
-	if event.is_action_pressed("swing"):
+	if event.is_action_pressed("swing") and not $SlashArea.visible:
 		swing_attack()
 	
 func swing_attack():
 	$SlashArea.visible = true
+	$SlashArea.monitoring = true 
+	
 	$SlashArea/Timer.start(0.5)
 	
 func hide_attacks():
 	$SlashArea.visible = false
+	$SlashArea.monitoring = false

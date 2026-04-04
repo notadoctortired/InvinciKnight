@@ -5,8 +5,11 @@ extends Area3D
 func _ready():
 	body_entered.connect(damage)
 	visible = false
+	monitoring = false
 	
 func damage(body):
+	var damage = 10*player.damage_mult
 	if visible:
-		if body.enemy_flag == true:
-			print("enemy hit!")
+		if body.get_child(0).name == "EnemyFlag": # All enemies have a node3D as their first child
+		# that flags them as enemies
+			body.health -= 10
