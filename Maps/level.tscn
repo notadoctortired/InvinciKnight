@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://maieoldkwsi5"]
 
 [ext_resource type="PackedScene" uid="uid://d1oagnssopcyo" path="res://Player/player.tscn" id="1_rdtea"]
+[ext_resource type="PackedScene" uid="uid://dlmbg8leeltp" path="res://Buildings/KOTH Point/koth.tscn" id="2_8m33b"]
+[ext_resource type="PackedScene" uid="uid://cocfb0a5f300g" path="res://AI/Peasant/peasant.tscn" id="3_obos6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5xgho"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u52ul"]
 size = Vector3(21, 1, 21)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_obos6"]
+vertices = PackedVector3Array(-10, 1.1, -10, -10, 1.1, 10, 10, 1.1, 10, 10, 1.1, -10)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_obos6"]
+size = Vector2(21, 21)
 
 [node name="Level" type="Node3D" unique_id=2013447816]
 
@@ -19,7 +28,20 @@ mesh = SubResource("BoxMesh_5xgho")
 shape = SubResource("BoxShape3D_u52ul")
 
 [node name="Player" parent="." unique_id=1806675999 instance=ExtResource("1_rdtea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1039218464]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 5, 0)
+
+[node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("2_8m33b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Peasant" parent="." unique_id=252368505 instance=ExtResource("3_obos6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=217935255]
+navigation_mesh = SubResource("NavigationMesh_obos6")
+
+[node name="RegionOne" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=494417816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("PlaneMesh_obos6")

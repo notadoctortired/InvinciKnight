@@ -37,15 +37,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
 shape = SubResource("BoxShape3D_btcbx")
 
 [node name="SlashArea" parent="PlayerBody" unique_id=2015310752 instance=ExtResource("2_btcbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.6)
 
 [node name="Timer" type="Timer" parent="PlayerBody/SlashArea" unique_id=1374999955]
 
-[node name="Camera" type="Camera3D" parent="." unique_id=1293427983 node_paths=PackedStringArray("target_follow", "target_look")]
+[node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
+
+[node name="Camera" type="Camera3D" parent="PlayerBody" unique_id=1293427983 node_paths=PackedStringArray("target_follow", "target_look")]
 script = ExtResource("2_4ntmi")
 target_follow = NodePath("../CameraSocket")
-target_look = NodePath("../PlayerBody")
+target_look = NodePath("..")
 follow_speed = 10.0
-
-[node name="CameraSocket" type="Node3D" parent="." unique_id=1018338127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
