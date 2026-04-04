@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export_category("Player Values")
 @export var health: float
 @export var speed: float
+@export var damage_mult: float
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -27,6 +28,15 @@ func _input(event: InputEvent):
 	
 	if event.is_action_pressed("rotate_left"):
 		rotate_y(-0.7853982)
+		
+	if event.is_action_pressed("swing"):
+		swing_attack(damage_mult) # Attacks have base values that are multiplied by damage mult
+		# Damage mult can be altered by upgrades of power-ups
 
 func damage(damage_amount: float):
 	health -= damage_amount
+	
+func swing_attack(mult: float):
+	var damage = 10*mult
+	
+	

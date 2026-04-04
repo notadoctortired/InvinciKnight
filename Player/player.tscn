@@ -7,18 +7,33 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_4ntmi"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
+size = Vector3(0.6, 0.6, 0.6)
+
 [node name="Player" type="Node3D" unique_id=1904113224]
 
 [node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=580162055]
 script = ExtResource("1_l8h54")
 health = 100.0
 speed = 5.0
+damage_mult = 2.0
 
 [node name="PlaceholderMesh" type="MeshInstance3D" parent="PlayerBody" unique_id=57317801]
 mesh = SubResource("CapsuleMesh_hvfyp")
 
 [node name="PlaceholderCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=345195676]
 shape = SubResource("CapsuleShape3D_l8h54")
+
+[node name="PlaceholderHeadMesh" type="MeshInstance3D" parent="PlayerBody" unique_id=793233844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
+mesh = SubResource("BoxMesh_4ntmi")
+
+[node name="PlaceholderHeadCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=648561467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
+shape = SubResource("BoxShape3D_btcbx")
 
 [node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
