@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://d1oagnssopcyo"]
 
-[ext_resource type="Script" uid="uid://bok5tyd5u2dm" path="res://Player/Scripts/player_controller.gd" id="1_l8h54"]
-[ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/camera.gd" id="2_4ntmi"]
+[ext_resource type="Script" uid="uid://bok5tyd5u2dm" path="res://Player/Scripts/Player Controls/player_controller.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/Player Controls/camera.gd" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/slasharea.tscn" id="2_btcbx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
 
@@ -35,11 +36,16 @@ mesh = SubResource("BoxMesh_4ntmi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
 shape = SubResource("BoxShape3D_btcbx")
 
-[node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
+[node name="SlashArea" parent="PlayerBody" unique_id=2015310752 instance=ExtResource("2_btcbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+
+[node name="Timer" type="Timer" parent="PlayerBody/SlashArea" unique_id=1374999955]
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1293427983 node_paths=PackedStringArray("target_follow", "target_look")]
 script = ExtResource("2_4ntmi")
-target_follow = NodePath("../PlayerBody/CameraSocket")
+target_follow = NodePath("../CameraSocket")
 target_look = NodePath("../PlayerBody")
 follow_speed = 10.0
+
+[node name="CameraSocket" type="Node3D" parent="." unique_id=1018338127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)

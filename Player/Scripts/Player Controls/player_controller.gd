@@ -5,6 +5,10 @@ extends CharacterBody3D
 @export var speed: float
 @export var damage_mult: float
 
+func _ready():
+	$SlashArea/Timer.timeout.connect(hide_attacks) # Catch-all function that hides every weapon
+	# once it has been triggered
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -30,13 +34,11 @@ func _input(event: InputEvent):
 		rotate_y(-0.7853982)
 		
 	if event.is_action_pressed("swing"):
-		swing_attack(damage_mult) # Attacks have base values that are multiplied by damage mult
-		# Damage mult can be altered by upgrades of power-ups
-
-func damage(damage_amount: float):
-	health -= damage_amount
+		swing_attack()
 	
-func swing_attack(mult: float):
-	var damage = 10*mult
+func swing_attack():
+	$SlashArea.visible = true
+	$SlashArea/Timer.start(0.5)
 	
-	
+func hide_attacks():
+	$SlashArea.visible = false
