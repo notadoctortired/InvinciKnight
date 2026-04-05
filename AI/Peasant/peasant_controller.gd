@@ -47,8 +47,10 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	look_at(move_target_pos)
 	
 	move_and_slide()
-		
+
 func kill_actor():
 	queue_free()

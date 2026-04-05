@@ -7,6 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_bt1o5"]
 
 [node name="Peasant" type="CharacterBody3D" unique_id=252368505]
+axis_lock_linear_y = true
 script = ExtResource("1_bt1o5")
 speed = 1.0
 health = 10.0

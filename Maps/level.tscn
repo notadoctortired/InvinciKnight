@@ -42,6 +42,7 @@ speed = 4.0
 health = 20.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=217935255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 navigation_mesh = SubResource("NavigationMesh_obos6")
 
 [node name="RegionOne" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=494417816]
@@ -49,6 +50,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("PlaneMesh_obos6")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=740570022]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0.3, 0.20000002, -0.3)
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0.3, 1, -0.3)
 vertices = PackedVector3Array(0.8, 0, 1.8000001, 1.2, 0, -1, -1.5470138, 0, -1.4186101, -2, 0, 1.4)
 affect_navigation_mesh = true
