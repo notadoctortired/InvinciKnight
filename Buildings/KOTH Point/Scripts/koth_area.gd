@@ -21,6 +21,10 @@ func _physics_process(delta: float):
 	if enemies.size() <= 0 and not progress_total >= 100:
 		progress_total += progress_mult
 	
+	var progress_bar = player.get_node("PlayerUI/CaptureProgress")
+	
+	progress_bar.value = progress_total
+	
 func add_enemy(body):
 	if body.get_child(0).name == "EnemyFlag":
 		enemies.append(enemies.size()+1)

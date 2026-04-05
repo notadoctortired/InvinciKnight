@@ -15,7 +15,7 @@ size = Vector3(0.6, 0.6, 0.6)
 size = Vector3(0.6, 0.6, 0.6)
 
 [sub_resource type="LabelSettings" id="LabelSettings_btcbx"]
-font_size = 20
+font_size = 25
 
 [node name="Player" type="Node3D" unique_id=1904113224]
 
@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 [node name="Timer" type="Timer" parent="PlayerBody/SlashArea" unique_id=1374999955]
 
 [node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5)
 
 [node name="Camera" type="Camera3D" parent="PlayerBody" unique_id=1293427983 node_paths=PackedStringArray("target_follow", "target_look")]
 script = ExtResource("2_4ntmi")
@@ -61,9 +61,22 @@ offset_bottom = 720.0
 
 [node name="RoundTimer" type="Label" parent="PlayerBody/PlayerUI" unique_id=496177885]
 layout_mode = 0
-offset_right = 206.0
-offset_bottom = 43.0
+offset_right = 295.0
+offset_bottom = 64.0
 text = "Time Remaining: n/a"
 label_settings = SubResource("LabelSettings_btcbx")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CaptureProgress" type="ProgressBar" parent="PlayerBody/PlayerUI" unique_id=1240196419]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -381.5
+offset_top = -54.0
+offset_right = 381.5
+grow_horizontal = 2
+grow_vertical = 0

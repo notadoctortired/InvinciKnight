@@ -2,14 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bb4nmf4nsgdxj" path="res://AI/Peasant/peasant_controller.gd" id="1_bt1o5"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt1o5"]
+albedo_color = Color(0.85604864, 0.49588835, 0.17963359, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_x2occ"]
+material = SubResource("StandardMaterial3D_bt1o5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bt1o5"]
 
 [node name="Peasant" type="CharacterBody3D" unique_id=252368505]
 axis_lock_linear_y = true
 script = ExtResource("1_bt1o5")
-speed = 1.0
+speed = 8.0
 health = 10.0
 
 [node name="EnemyFlag" type="Node3D" parent="." unique_id=1184154997]
