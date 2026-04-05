@@ -14,6 +14,9 @@ size = Vector3(0.6, 0.6, 0.6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
 size = Vector3(0.6, 0.6, 0.6)
 
+[sub_resource type="LabelSettings" id="LabelSettings_btcbx"]
+font_size = 20
+
 [node name="Player" type="Node3D" unique_id=1904113224]
 
 [node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=580162055]
@@ -37,7 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
 shape = SubResource("BoxShape3D_btcbx")
 
 [node name="SlashArea" parent="PlayerBody" unique_id=2015310752 instance=ExtResource("2_btcbx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="Timer" type="Timer" parent="PlayerBody/SlashArea" unique_id=1374999955]
 
@@ -49,3 +52,18 @@ script = ExtResource("2_4ntmi")
 target_follow = NodePath("../CameraSocket")
 target_look = NodePath("..")
 follow_speed = 10.0
+
+[node name="PlayerUI" type="Control" parent="PlayerBody" unique_id=1361119872]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="RoundTimer" type="Label" parent="PlayerBody/PlayerUI" unique_id=496177885]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 43.0
+text = "Time Remaining: n/a"
+label_settings = SubResource("LabelSettings_btcbx")
+horizontal_alignment = 1
+vertical_alignment = 1
