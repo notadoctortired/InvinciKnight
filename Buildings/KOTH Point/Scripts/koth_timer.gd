@@ -24,4 +24,4 @@ func _physics_process(delta: float):
 	timerUI.text = "Time Remaining: " + str(int(round_length))
 
 func win():
-	print("You win!")
+	get_tree().change_scene_to_file("res://Maps/victory.tscn")
