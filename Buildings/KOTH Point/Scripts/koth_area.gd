@@ -14,7 +14,7 @@ func _ready() -> void:
 	body_entered.connect(add_enemy)
 	body_exited.connect(remove_enemy)
 	
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if enemies.size() > 0:
 		progress_total -= progress_mult*enemies.size()
 		

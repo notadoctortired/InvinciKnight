@@ -13,7 +13,6 @@ func _ready():
 	look_at(player.global_position)
 	move_target_pos = player.global_position
 	
-	
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
 	
@@ -33,9 +32,6 @@ func _physics_process(delta):
 	var next_path_pos = navigation_agent.get_next_path_position()
 	
 	velocity = current_agent_pos.direction_to(next_path_pos) * speed
-	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 	
 	move_and_slide()
 
