@@ -24,14 +24,17 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
+	
+	if health <= 0:
+		kill_actor()
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("rotate_right"):
 		# 0.7853982 is 45 degrees in radians
-		rotate_y(0.7853982)
+		rotate_y(-0.7853982)
 	
 	if event.is_action_pressed("rotate_left"):
-		rotate_y(-0.7853982)
+		rotate_y(0.7853982)
 		
 	if event.is_action_pressed("swing") and not $SlashArea.visible:
 		swing_attack()
@@ -45,3 +48,6 @@ func swing_attack():
 func hide_attacks():
 	$SlashArea.visible = false
 	$SlashArea.monitoring = false
+
+func kill_actor():
+	get_tree().change_scene_to_file("res://Maps/Menus/death.tscn")

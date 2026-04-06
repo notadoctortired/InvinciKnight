@@ -5,11 +5,13 @@ extends StaticBody3D
 
 @onready var timer = $Timer
 @onready var root = get_tree().root.get_child(0)
-@onready var UI = root.get_node("Player/PlayerBody/PlayerUI")
+var UI = null
 
 func _ready():
 	timer.timeout.connect(win)
 	timer.start(round_length)
+	
+	UI = root.get_node("Player/PlayerBody/PlayerUI")
 	
 	var timerUI = UI.get_node("RoundTimer")
 	
@@ -24,4 +26,4 @@ func _physics_process(delta: float):
 	timerUI.text = "Time Remaining: " + str(int(round_length))
 
 func win():
-	get_tree().change_scene_to_file("res://Maps/victory.tscn")
+	get_tree().change_scene_to_file("res://Maps/Menus/victory.tscn")

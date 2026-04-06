@@ -32,8 +32,9 @@ func set_movement_target(target):
 func _physics_process(delta):
 	set_movement_target(move_target_pos)
 	
-	if health == 0:
+	if health <= 0:
 		kill_actor()
+		return
 	
 	if NavigationServer3D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
 		return

@@ -8,9 +8,12 @@ extends Node3D
 @export var sorcerer_cooldown: float
 
 @onready var peasant = "res://AI/Peasant/peasant.tscn"
+@onready var sorcerer = "res://AI/Sorcerer/sorcerer.tscn"
 
 var peasant_timer = 0
 var sorcerer_timer = sorcerer_cooldown
+
+var sorcerer_counter = []
 
 func _ready():
 	pass
@@ -44,5 +47,21 @@ func spawn_peasant():
 
 func spawn_sorcerer():
 	print("Implement Sorcerer")
+	
+	if not sorcerer_counter.size() >= 4:
+		var spawn_location = randi_range(0,get_children().size()-1)
+		spawn_location = get_child(spawn_location).position
+		
+		# Loads enemy scene into PackedScene
+		var scene = load(sorcerer)
+		# Creates an instance of the unit
+		var instance = scene.instantiate()
+			
+		# Sets the unit's position (adjusting it to be above the ground using the child node "Base")
+		# and adds it to the scene tree
+		instance.position = spawn_location - (2*instance.get_node("NavRoot").position)
+		get_tree().root.add_child(instance)
+		
+		sorcerer_counter.append(instance)
 	
 	sorcerer_timer = sorcerer_cooldown
