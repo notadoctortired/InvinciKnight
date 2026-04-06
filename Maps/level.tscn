@@ -21,7 +21,7 @@ size = Vector2(50, 50)
 
 [node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("2_8m33b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-round_length = 10.0
+round_length = 120.0
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1815422157]
 
@@ -54,7 +54,8 @@ affect_navigation_mesh = true
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=977383990]
 script = ExtResource("4_wy0yp")
 peasant_cooldown = 1.0
-sorcerer_cooldown = 1.0
+sorcerer_cooldown = 20.0
+sorcerer_delay = 40.0
 
 [node name="Point1" type="Node3D" parent="SpawnPoints" unique_id=901588636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)

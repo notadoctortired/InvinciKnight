@@ -6,12 +6,13 @@ extends Node3D
 @export_category("Cooldowns")
 @export var peasant_cooldown: float
 @export var sorcerer_cooldown: float
+@export var sorcerer_delay: float
 
 @onready var peasant = "res://AI/Peasant/peasant.tscn"
 @onready var sorcerer = "res://AI/Sorcerer/sorcerer.tscn"
 
-var peasant_timer = 0
-var sorcerer_timer = sorcerer_cooldown
+@onready var peasant_timer = 0
+@onready var sorcerer_timer = sorcerer_delay
 
 var sorcerer_counter = []
 

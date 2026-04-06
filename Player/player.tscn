@@ -80,3 +80,36 @@ offset_top = -54.0
 offset_right = 381.5
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Healthbar" type="ProgressBar" parent="PlayerBody/PlayerUI" unique_id=1704188407]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -718.0
+offset_right = 641.0
+offset_bottom = -664.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="NavPointsSorcerer" type="Node3D" parent="PlayerBody" unique_id=1396170878]
+
+[node name="Nav1" type="Node3D" parent="PlayerBody/NavPointsSorcerer" unique_id=500032676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Nav2" type="Node3D" parent="PlayerBody/NavPointsSorcerer" unique_id=1740339797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Nav3" type="Node3D" parent="PlayerBody/NavPointsSorcerer" unique_id=68757725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Nav4" type="Node3D" parent="PlayerBody/NavPointsSorcerer" unique_id=723147751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)

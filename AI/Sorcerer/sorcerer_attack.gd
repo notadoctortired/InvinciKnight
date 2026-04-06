@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 @export_category("Values")
 @export var speed: float
-@export var health: float
 
 var move_target_pos = Vector3(0,0,0)
 
@@ -10,21 +9,16 @@ var move_target_pos = Vector3(0,0,0)
 @onready var root = get_tree().root.get_child(0)
 @onready var player = root.get_node("Player/PlayerBody")
 
-var point = null
-var nav_points = null
-
 func _ready():
+	look_at(player.global_position)
+	move_target_pos = player.global_position
+	
+	
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
 	
 	actor_setup.call_deferred()
-	
-	var koth = root.get_node("KOTH")
-	
-	if koth != null:
-		nav_points = player.get_node("NavPointsSorcerer").get_children()
-		point = randi_range(0,nav_points.size()-1) # Reduce by one to correct index
-	
+
 func actor_setup():
 	await get_tree().physics_frame
 
@@ -32,14 +26,8 @@ func set_movement_target(target):
 	navigation_agent.set_target_position(target)
 	
 func _physics_process(delta):
-	if is_instance_valid(player):
-		move_target_pos = nav_points[point].global_position
 	
 	set_movement_target(move_target_pos)
-	
-	if health <= 0:
-		kill_actor()
-		return
 
 	var current_agent_pos = global_position
 	var next_path_pos = navigation_agent.get_next_path_position()
@@ -48,8 +36,6 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if is_instance_valid(player):
-		look_at(player.global_position)
 	
 	move_and_slide()
 

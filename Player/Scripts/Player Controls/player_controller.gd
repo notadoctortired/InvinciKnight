@@ -8,8 +8,15 @@ extends CharacterBody3D
 func _ready():
 	$SlashArea/Timer.timeout.connect(hide_attacks) # Catch-all function that hides every weapon
 	# once it has been triggered
+	
+	$PlayerUI/Healthbar.visible = false
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		kill_actor()
+	
+	$PlayerUI/Healthbar.value = health
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -24,9 +31,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
-	
-	if health <= 0:
-		kill_actor()
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("rotate_right"):

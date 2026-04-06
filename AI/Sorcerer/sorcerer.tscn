@@ -13,12 +13,9 @@ size = Vector3(1, 2, 1)
 size = Vector3(1, 2, 1)
 
 [node name="Sorcerer" type="CharacterBody3D" unique_id=252368505]
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
 script = ExtResource("1_2aoss")
-speed = 8.0
-health = 30.0
+speed = 2.0
+health = 60.0
 
 [node name="EnemyFlag" type="Node3D" parent="." unique_id=1184154997]
 
@@ -30,3 +27,8 @@ shape = SubResource("BoxShape3D_bt1o5")
 
 [node name="NavRoot" type="Node3D" parent="." unique_id=581695110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavRoot" unique_id=287407204]
+debug_enabled = true
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=844584872]

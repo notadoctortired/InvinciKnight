@@ -28,3 +28,4 @@ shape = SubResource("BoxShape3D_bt1o5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavRoot" unique_id=1228599515]
+debug_enabled = true
