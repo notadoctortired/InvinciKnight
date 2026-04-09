@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bv3e1cww7sihy"]
 
-[ext_resource type="Script" uid="uid://qhlax625v0" path="res://Maps/Menus/victory_UI.gd" id="1_mmu8o"]
+[ext_resource type="Script" uid="uid://qhlax625v0" path="res://Player/Scripts/button_UI.gd" id="1_mmu8o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_guw0i"]
 font_size = 109

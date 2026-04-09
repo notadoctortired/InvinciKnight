@@ -14,11 +14,15 @@ size = Vector3(1, 2, 1)
 
 [node name="Sorcerer" type="CharacterBody3D" unique_id=252368505]
 script = ExtResource("1_2aoss")
-speed = 2.0
+speed = 4.0
 health = 60.0
 attack_cooldown = 2.0
+minimum_distance_to_player = 5.0
 
 [node name="EnemyFlag" type="Node3D" parent="." unique_id=1184154997]
+
+[node name="AttackSpawn" type="MeshInstance3D" parent="." unique_id=212506104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=825856893]
 mesh = SubResource("BoxMesh_x2occ")
@@ -33,3 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 debug_enabled = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=844584872]
+
+[node name="SpawnSFX" type="AudioStreamPlayer3D" parent="." unique_id=874250283]
+
+[node name="MovementSFX" type="AudioStreamPlayer3D" parent="." unique_id=10045030]

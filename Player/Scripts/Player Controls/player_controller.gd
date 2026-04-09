@@ -9,26 +9,28 @@ extends CharacterBody3D
 @export var slash_cooldown: float
 @export var crossbow_cooldown: float
 
-# Global variables to be assigned in _ready that use $
-var crossbow = null
-var slash = null
-var attack_timer = null
-var healthbar = null
-
-var meshes = null
+# Attack Variables
+@onready var crossbow = $Meshes/Crossbow
+@onready var slash = $SlashArea
+@onready var attack_timer = $Timer
 var crossbow_active = false
 
+# UI Variables
+@onready var healthbar = $PlayerUI/Healthbar
+
+# SFX Variables
+@onready var walking_sfx = $WalkingSFX
+var walking_playback = 0
+
+# Mesh / Rotation Variables
+@onready var meshes = $Meshes
+
 func _ready():
-	crossbow = $Meshes/Crossbow
-	slash = $SlashArea
-	healthbar = $PlayerUI/Healthbar
-	attack_timer = $Timer
-	
-	meshes = $Meshes
-	
 	attack_timer.timeout.connect(hide_attacks) # Catch-all function that hides every weapon
 	# once it has been triggered
 	healthbar.visible = false
+	
+	walking_sfx.stream.loop = true
 
 func _physics_process(delta: float) -> void:
 	if health <= 0:
@@ -51,6 +53,12 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity != Vector3.ZERO:
 		meshes.rotation.y = atan2(velocity.z,-velocity.x)
+	
+	if velocity != Vector3.ZERO and not walking_sfx.playing:
+		walking_sfx.play(walking_playback)
+	elif velocity == Vector3.ZERO and walking_sfx.playing:
+		walking_playback = walking_sfx.get_playback_position()
+		walking_sfx.stop()
 	
 	move_and_slide()
 

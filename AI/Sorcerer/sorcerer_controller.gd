@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var speed: float
 @export var health: float
 @export var attack_cooldown: float
+@export var minimum_distance_to_player: float
 
 var move_target_pos = Vector3(0,0,0)
 
@@ -41,37 +42,39 @@ func _physics_process(delta):
 	if is_instance_valid(player):
 		move_target_pos = nav_points[point].global_position
 	
-	set_movement_target(move_target_pos)
-	
-	if health <= 0:
-		kill_actor()
-		return
+		set_movement_target(move_target_pos)
+		
+		if health <= 0:
+			kill_actor()
+			return
 
-	var current_agent_pos = global_position
-	var next_path_pos = navigation_agent.get_next_path_position()
-	
-	velocity = current_agent_pos.direction_to(next_path_pos) * speed
-	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	if is_instance_valid(player):
-		look_at(player.global_position)
-	
-	move_and_slide()
+		var current_agent_pos = global_position
+		var next_path_pos = navigation_agent.get_next_path_position()
+		
+		velocity = current_agent_pos.direction_to(next_path_pos) * speed
+		
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		if is_instance_valid(player):
+			look_at(player.global_position)
+		
+		move_and_slide()
 
 func kill_actor():
 	queue_free()
 	
 func spawn_attack():
-	print("attacking!")
-	var spawn_location = global_position
-	spawn_location.y += 3
-	
-	var scene = load("res://AI/Sorcerer/sorcerer_attack.tscn")
-	var instance = scene.instantiate()
-	
-	instance.position = spawn_location
-	get_tree().root.add_child(instance)
+	if is_instance_valid(player):
+		var distance = global_position.distance_to(player.position)
+		
+		if distance >= minimum_distance_to_player:
+			var spawn_location = $AttackSpawn.global_position
+			
+			var scene = load("res://AI/Sorcerer/sorcerer_attack.tscn")
+			var instance = scene.instantiate()
+			
+			instance.position = spawn_location
+			get_tree().root.add_child(instance)
 	
 func damage(dmg):
 	health -= dmg

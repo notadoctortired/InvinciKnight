@@ -36,6 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1039218464]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 5, 0)
+shadow_enabled = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=217935255]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -53,8 +54,9 @@ affect_navigation_mesh = true
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=977383990]
 script = ExtResource("4_wy0yp")
-peasant_cooldown = 1.0
-sorcerer_cooldown = 20.0
+peasant_cooldown = 0.5
+sorcerer_cooldown = 15.0
+sorcerer_delay = 40.0
 
 [node name="Point1" type="Node3D" parent="SpawnPoints" unique_id=901588636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)

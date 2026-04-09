@@ -18,8 +18,8 @@ func _physics_process(_delta: float):
 	if enemies.size() > 0:
 		progress_total += progress_mult*enemies.size()
 		
-	if enemies.size() <= 0 and not progress_total <= 100:
-		progress_total -= progress_mult
+	if enemies.size() <= 0 and not progress_total <= 0:
+		progress_total -= progress_mult*2
 	
 	var progress_bar = player.get_node("PlayerUI/CaptureProgress")
 	

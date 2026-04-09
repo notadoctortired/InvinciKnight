@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/Player Controls/camera.gd" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/Attacks/slasharea.tscn" id="2_btcbx"]
 [ext_resource type="PackedScene" uid="uid://ch83e7xjoac23" path="res://Player/Attacks/crossbow.tscn" id="2_gwnis"]
+[ext_resource type="AudioStream" uid="uid://fkc72fd5s0q8" path="res://Player/Resources/SFX/SFX_walking.mp3" id="4_k53q1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwnis"]
 albedo_color = Color(0, 1, 0, 1)
@@ -35,10 +36,10 @@ font_size = 25
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_l8h54")
 health = 100.0
-speed = 5.0
+speed = 7.0
 damage_mult = 2.0
 slash_cooldown = 0.5
-crossbow_cooldown = 2.0
+crossbow_cooldown = 1.0
 
 [node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -67,9 +68,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="PlayerUI" type="Control" parent="PlayerBody" unique_id=1361119872]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="RoundTimer" type="Label" parent="PlayerBody/PlayerUI" unique_id=496177885]
 layout_mode = 0
@@ -97,17 +100,12 @@ grow_vertical = 0
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -122.0
-offset_top = -718.0
-offset_right = 641.0
-offset_bottom = -664.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -500.0
+offset_bottom = 30.0
+grow_horizontal = 0
 value = 100.0
 fill_mode = 1
 show_percentage = false
@@ -127,6 +125,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 
 [node name="Timer" type="Timer" parent="PlayerBody" unique_id=1148927812]
+
+[node name="WalkingSFX" type="AudioStreamPlayer3D" parent="PlayerBody" unique_id=1925880877]
+stream = ExtResource("4_k53q1")
+volume_db = -7.0
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1293427983 node_paths=PackedStringArray("target_follow")]
 transform = Transform3D(0, -1, -4.371139e-08, -4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, 0, 0)

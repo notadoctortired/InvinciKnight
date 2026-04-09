@@ -9,6 +9,8 @@ var move_target_pos = Vector3(0,0,0)
 @onready var navigation_agent = $NavRoot/NavigationAgent3D
 @onready var root = get_tree().root.get_child(0)
 
+var randomisation = randf_range(-1,1)
+
 func _ready():
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
@@ -22,6 +24,8 @@ func _ready():
 		var point = randi_range(0,nav_points.size()-1) # Reduce by one to correct index
 		
 		move_target_pos = nav_points[point].global_position
+		
+	speed += randomisation
 	
 func actor_setup():
 	await get_tree().physics_frame
