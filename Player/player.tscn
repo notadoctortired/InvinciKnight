@@ -4,12 +4,23 @@
 [ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/Player Controls/camera.gd" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/slasharea.tscn" id="2_btcbx"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwnis"]
+albedo_color = Color(0, 1, 0, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
+material = SubResource("StandardMaterial3D_gwnis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btcbx"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 7.9
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ntmi"]
+material = SubResource("StandardMaterial3D_btcbx")
 size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
 size = Vector3(0.6, 0.6, 0.6)
@@ -20,20 +31,26 @@ font_size = 25
 [node name="Player" type="Node3D" unique_id=1904113224]
 
 [node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=580162055]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_l8h54")
 health = 100.0
 speed = 5.0
 damage_mult = 2.0
 
-[node name="PlaceholderMesh" type="MeshInstance3D" parent="PlayerBody" unique_id=57317801]
+[node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="Meshes" type="Node3D" parent="PlayerBody" unique_id=768892921]
+
+[node name="PlaceholderMesh" type="MeshInstance3D" parent="PlayerBody/Meshes" unique_id=57317801]
 mesh = SubResource("CapsuleMesh_hvfyp")
+
+[node name="PlaceholderHeadMesh" type="MeshInstance3D" parent="PlayerBody/Meshes" unique_id=793233844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.742278e-09, 0.40000007, -0.4)
+mesh = SubResource("BoxMesh_4ntmi")
 
 [node name="PlaceholderCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=345195676]
 shape = SubResource("CapsuleShape3D_l8h54")
-
-[node name="PlaceholderHeadMesh" type="MeshInstance3D" parent="PlayerBody" unique_id=793233844]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
-mesh = SubResource("BoxMesh_4ntmi")
 
 [node name="PlaceholderHeadCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=648561467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
@@ -43,15 +60,6 @@ shape = SubResource("BoxShape3D_btcbx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="Timer" type="Timer" parent="PlayerBody/SlashArea" unique_id=1374999955]
-
-[node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5)
-
-[node name="Camera" type="Camera3D" parent="PlayerBody" unique_id=1293427983 node_paths=PackedStringArray("target_follow", "target_look")]
-script = ExtResource("2_4ntmi")
-target_follow = NodePath("../CameraSocket")
-target_look = NodePath("..")
-follow_speed = 10.0
 
 [node name="PlayerUI" type="Control" parent="PlayerBody" unique_id=1361119872]
 layout_mode = 3
@@ -113,3 +121,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
 [node name="Nav4" type="Node3D" parent="PlayerBody/NavPointsSorcerer" unique_id=723147751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1293427983 node_paths=PackedStringArray("target_follow")]
+transform = Transform3D(0, -1, -4.371139e-08, -4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, 0, 0)
+script = ExtResource("2_4ntmi")
+target_follow = NodePath("../PlayerBody/CameraSocket")
+follow_speed = 10.0

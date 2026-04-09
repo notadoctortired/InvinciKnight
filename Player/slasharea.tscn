@@ -7,12 +7,12 @@ albedo_color = Color(0.5803922, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_dyx22"]
 material = SubResource("StandardMaterial3D_dyx22")
-radius = 1.5
+radius = 1.65
 height = 0.1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tohub"]
 height = 1.0
-radius = 1.5
+radius = 1.65
 
 [node name="SlashArea" type="Area3D" unique_id=2015310752]
 script = ExtResource("1_dyx22")
