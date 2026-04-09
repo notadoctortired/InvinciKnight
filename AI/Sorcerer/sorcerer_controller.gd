@@ -3,23 +3,29 @@ extends CharacterBody3D
 @export_category("Values")
 @export var speed: float
 @export var health: float
+@export var attack_cooldown: float
 
 var move_target_pos = Vector3(0,0,0)
 
 @onready var navigation_agent = $NavRoot/NavigationAgent3D
-@onready var root = get_tree().root.get_child(0)
-@onready var player = root.get_node("Player/PlayerBody")
+@onready var scene_root = get_tree().root.get_child(0)
+@onready var player = scene_root.get_node("Player/PlayerBody")
 
 var point = null
 var nav_points = null
 
 func _ready():
+	attack_cooldown += randf_range(-0.2,0.2)
+	
+	$AttackTimer.timeout.connect(spawn_attack)
+	$AttackTimer.start(attack_cooldown)
+	
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
 	
 	actor_setup.call_deferred()
 	
-	var koth = root.get_node("KOTH")
+	var koth = scene_root.get_node("KOTH")
 	
 	if koth != null:
 		nav_points = player.get_node("NavPointsSorcerer").get_children()
@@ -55,3 +61,17 @@ func _physics_process(delta):
 
 func kill_actor():
 	queue_free()
+	
+func spawn_attack():
+	print("attacking!")
+	var spawn_location = global_position
+	spawn_location.y += 3
+	
+	var scene = load("res://AI/Sorcerer/sorcerer_attack.tscn")
+	var instance = scene.instantiate()
+	
+	instance.position = spawn_location
+	get_tree().root.add_child(instance)
+	
+func damage(dmg):
+	health -= dmg

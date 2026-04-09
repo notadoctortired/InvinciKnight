@@ -16,6 +16,7 @@ size = Vector3(1, 2, 1)
 script = ExtResource("1_2aoss")
 speed = 2.0
 health = 60.0
+attack_cooldown = 2.0
 
 [node name="EnemyFlag" type="Node3D" parent="." unique_id=1184154997]
 

@@ -1,36 +1,32 @@
 [gd_scene format=3 uid="uid://bh26qmos8k5d4"]
 
-[ext_resource type="Script" uid="uid://b2m8ukxrhomye" path="res://AI/Sorcerer/sorcerer_attack.gd" id="1_yyqp8"]
+[ext_resource type="Script" uid="uid://b2m8ukxrhomye" path="res://AI/Sorcerer/sorcerer_attack_controller.gd" id="1_yyqp8"]
+[ext_resource type="Material" uid="uid://bka8tmpat51ke" path="res://AI/Sorcerer/Resources/MAT_spell_attack.tres" id="2_a5ddw"]
+[ext_resource type="Script" uid="uid://5j4nipy5m4ww" path="res://AI/Sorcerer/sorcerer_attack_collision.gd" id="3_4g72r"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xd07l"]
-albedo_color = Color(1, 0.25490198, 0.023529412, 1)
-emission_enabled = true
-emission = Color(1, 0.22745098, 0, 1)
-emission_energy_multiplier = 4.45
-
-[sub_resource type="SphereMesh" id="SphereMesh_xd07l"]
-material = SubResource("StandardMaterial3D_xd07l")
+[sub_resource type="SphereMesh" id="SphereMesh_yyqp8"]
+material = ExtResource("2_a5ddw")
+radius = 0.35
+height = 0.7
 radial_segments = 10
-rings = 5
+rings = 10
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xd07l"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_a5ddw"]
+radius = 0.35
 
 [node name="SorcererAttack" type="CharacterBody3D" unique_id=1738256479]
+motion_mode = 1
 script = ExtResource("1_yyqp8")
-speed = 10.0
+speed = 1000.0
+damage = 10.0
 
-[node name="SoftBody3D" type="SoftBody3D" parent="." unique_id=509900818]
-mesh = SubResource("SphereMesh_xd07l")
-parent_collision_ignore = NodePath("..")
-simulation_precision = 1
-linear_stiffness = 0.8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1365249024]
-shape = SubResource("SphereShape3D_xd07l")
-
-[node name="NavRoot" type="Node3D" parent="." unique_id=945203889]
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavRoot" unique_id=9783660]
-debug_enabled = true
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1759514541]
+mesh = SubResource("SphereMesh_yyqp8")
 
 [node name="CollisionDetection" type="Area3D" parent="." unique_id=1453152369]
+script = ExtResource("3_4g72r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionDetection" unique_id=97071197]
+shape = SubResource("SphereShape3D_a5ddw")
+
+[node name="Timer" type="Timer" parent="." unique_id=1309723077]

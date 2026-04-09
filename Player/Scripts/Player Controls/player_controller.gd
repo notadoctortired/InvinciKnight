@@ -9,7 +9,7 @@ func _ready():
 	$SlashArea/Timer.timeout.connect(hide_attacks) # Catch-all function that hides every weapon
 	# once it has been triggered
 	
-	$PlayerUI/Healthbar.visible = false
+	$PlayerUI/Healthbar.visible = true
 
 func _physics_process(delta: float) -> void:
 	if health <= 0:
@@ -42,6 +42,9 @@ func _input(event: InputEvent):
 		
 	if event.is_action_pressed("swing") and not $SlashArea.visible:
 		swing_attack()
+		
+func damage(dmg: float):
+	health -= dmg
 	
 func swing_attack():
 	$SlashArea.visible = true

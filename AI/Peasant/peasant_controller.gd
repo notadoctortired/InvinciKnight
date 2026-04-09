@@ -55,3 +55,6 @@ func _physics_process(delta):
 
 func kill_actor():
 	queue_free()
+
+func damage(dmg):
+	health -= dmg
