@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export_category("Values")
 @export var speed: float
 @export var damage: float
+@export var despawn_time: float
 
 var target_pos = null
 
@@ -11,6 +12,7 @@ var target_pos = null
 
 func _ready():
 	$Timer.timeout.connect(kill_actor)
+	$Timer.start(despawn_time)
 	
 	if is_instance_valid(player):
 		target_pos = player.global_position

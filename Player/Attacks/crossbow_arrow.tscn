@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dom7gegwop82h"]
+
+[ext_resource type="Script" uid="uid://bg7b0qm4th4we" path="res://Player/Scripts/Attacks/arrow_movement.gd" id="1_baoto"]
+[ext_resource type="Script" uid="uid://kkymvafdfy04" path="res://Player/Scripts/Attacks/arrow_hit.gd" id="1_vxvc4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baoto"]
+albedo_color = Color(0.18540591, 0.0864945, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hvrgq"]
+material = SubResource("StandardMaterial3D_baoto")
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxvc4"]
+size = Vector3(0.6, 0.6, 1)
+
+[node name="CrossbowArrow" type="CharacterBody3D" unique_id=1370694056]
+motion_mode = 1
+script = ExtResource("1_baoto")
+speed = 1000.0
+damage = 20.0
+despawn_time = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=901654022]
+mesh = SubResource("BoxMesh_hvrgq")
+
+[node name="CollissionDetection" type="Area3D" parent="." unique_id=119131967]
+script = ExtResource("1_vxvc4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollissionDetection" unique_id=1262456471]
+shape = SubResource("BoxShape3D_vxvc4")
+
+[node name="Timer" type="Timer" parent="." unique_id=253891775]

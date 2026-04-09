@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bok5tyd5u2dm" path="res://Player/Scripts/Player Controls/player_controller.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/Player Controls/camera.gd" id="2_4ntmi"]
-[ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/slasharea.tscn" id="2_btcbx"]
+[ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/Attacks/slasharea.tscn" id="2_btcbx"]
+[ext_resource type="PackedScene" uid="uid://ch83e7xjoac23" path="res://Player/Attacks/crossbow.tscn" id="2_gwnis"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwnis"]
 albedo_color = Color(0, 1, 0, 1)
@@ -36,6 +37,8 @@ script = ExtResource("1_l8h54")
 health = 100.0
 speed = 5.0
 damage_mult = 2.0
+slash_cooldown = 0.5
+crossbow_cooldown = 2.0
 
 [node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -49,6 +52,9 @@ mesh = SubResource("CapsuleMesh_hvfyp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.742278e-09, 0.40000007, -0.4)
 mesh = SubResource("BoxMesh_4ntmi")
 
+[node name="Crossbow" parent="PlayerBody/Meshes" unique_id=1755181535 instance=ExtResource("2_gwnis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6226834e-08, 0, -0.6)
+
 [node name="PlaceholderCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=345195676]
 shape = SubResource("CapsuleShape3D_l8h54")
 
@@ -58,8 +64,6 @@ shape = SubResource("BoxShape3D_btcbx")
 
 [node name="SlashArea" parent="PlayerBody" unique_id=2015310752 instance=ExtResource("2_btcbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="Timer" type="Timer" parent="PlayerBody/SlashArea" unique_id=1374999955]
 
 [node name="PlayerUI" type="Control" parent="PlayerBody" unique_id=1361119872]
 layout_mode = 3
@@ -121,6 +125,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
 [node name="Nav4" type="Node3D" parent="PlayerBody/NavPointsSorcerer" unique_id=723147751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Timer" type="Timer" parent="PlayerBody" unique_id=1148927812]
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1293427983 node_paths=PackedStringArray("target_follow")]
 transform = Transform3D(0, -1, -4.371139e-08, -4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, 0, 0)

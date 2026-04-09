@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ch83e7xjoac23"]
+
+[ext_resource type="Script" uid="uid://cqk1wne34oxh0" path="res://Player/Scripts/Attacks/crossbow_attack.gd" id="1_rat1y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vwto1"]
+size = Vector3(0.6, 0.1, 1)
+
+[node name="Crossbow" type="Area3D" unique_id=1755181535]
+script = ExtResource("1_rat1y")
+arrows = 4
+firing_arc = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=249303569]
+mesh = SubResource("BoxMesh_vwto1")
+
+[node name="FiringPoint" type="Node3D" parent="." unique_id=1601503566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

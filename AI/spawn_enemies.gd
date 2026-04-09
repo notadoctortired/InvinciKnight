@@ -47,8 +47,6 @@ func spawn_peasant():
 	peasant_timer = peasant_cooldown
 
 func spawn_sorcerer():
-	print("Implement Sorcerer")
-	
 	if not sorcerer_counter.size() >= 4:
 		var spawn_location = randi_range(0,get_children().size()-1)
 		spawn_location = get_child(spawn_location).position

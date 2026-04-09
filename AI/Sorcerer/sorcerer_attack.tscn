@@ -19,6 +19,7 @@ motion_mode = 1
 script = ExtResource("1_yyqp8")
 speed = 1000.0
 damage = 10.0
+despawn_time = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1759514541]
 mesh = SubResource("SphereMesh_yyqp8")
