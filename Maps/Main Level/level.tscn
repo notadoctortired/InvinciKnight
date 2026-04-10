@@ -56,8 +56,8 @@ affect_navigation_mesh = true
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=977383990]
 script = ExtResource("3_lb4vo")
-peasant_cooldown = 0.6
-sorcerer_cooldown = 7.0
+peasant_cooldown = 0.8
+sorcerer_cooldown = 8.0
 sorcerer_delay = 40.0
 
 [node name="Point1" type="Node3D" parent="SpawnPoints" unique_id=901588636]
