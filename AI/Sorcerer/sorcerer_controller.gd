@@ -26,6 +26,8 @@ func _ready():
 	
 	actor_setup.call_deferred()
 	
+	$SpawnSFX.play()
+	
 	var koth = scene_root.get_node("KOTH")
 	
 	if koth != null:

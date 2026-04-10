@@ -4,28 +4,32 @@ extends Area3D
 @export var progress_total: float
 @export var progress_mult: float
 
+var current_progress = 0
+
 @onready var enemies = []
 
 # Player Variables
 @onready var root = get_tree().root.get_child(0)
 @onready var player = root.get_node("Player/PlayerBody")
 
+@onready var progress_bar = player.get_node("PlayerUI/CaptureProgress")
+
 func _ready() -> void:
 	body_entered.connect(add_enemy)
 	body_exited.connect(remove_enemy)
 	
-func _physics_process(_delta: float):
+	progress_bar.max_value = progress_total
+	
+func _physics_process(delta: float):
 	if enemies.size() > 0:
-		progress_total += progress_mult*enemies.size()
+		current_progress += progress_mult*enemies.size()
 		
-	if enemies.size() <= 0 and not progress_total <= 0:
-		progress_total -= progress_mult*2
+	if enemies.size() <= 0 and not current_progress <= 0:
+		current_progress -= progress_mult
 	
-	var progress_bar = player.get_node("PlayerUI/CaptureProgress")
+	progress_bar.value = current_progress
 	
-	progress_bar.value = progress_total
-	
-	if progress_total >= 100:
+	if current_progress >= progress_total:
 		get_tree().change_scene_to_file("res://Maps/Menus/death.tscn")
 	
 func add_enemy(body):

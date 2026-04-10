@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wo0a7dga8xuw"]
 
 [ext_resource type="Script" uid="uid://x6anmiadkb3i" path="res://AI/Sorcerer/sorcerer_controller.gd" id="1_2aoss"]
+[ext_resource type="AudioStream" uid="uid://cmsg1uhpqenji" path="res://AI/Sorcerer/Resources/SFX_SorcererSpawn.mp3" id="2_cl27r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2aoss"]
 albedo_color = Color(0.75686276, 0.08235294, 1, 1)
@@ -34,10 +35,10 @@ shape = SubResource("BoxShape3D_bt1o5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavRoot" unique_id=287407204]
-debug_enabled = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=844584872]
 
 [node name="SpawnSFX" type="AudioStreamPlayer3D" parent="." unique_id=874250283]
+stream = ExtResource("2_cl27r")
 
 [node name="MovementSFX" type="AudioStreamPlayer3D" parent="." unique_id=10045030]

@@ -11,8 +11,3 @@ func _ready():
 func hit(body):
 	if body.has_method("damage") and body.get_child(0).name == "EnemyFlag":
 		body.damage(arrow.damage*damage_mult)
-	
-	if body.has_method("hit") or body.name == "PlayerBody":
-		print("ignoring!")
-	else:
-		arrow.kill_actor()

@@ -17,8 +17,8 @@ radius = 0.35
 [node name="SorcererAttack" type="CharacterBody3D" unique_id=1738256479]
 motion_mode = 1
 script = ExtResource("1_yyqp8")
-speed = 1000.0
-damage = 10.0
+speed = 900.0
+damage = 15.0
 despawn_time = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1759514541]

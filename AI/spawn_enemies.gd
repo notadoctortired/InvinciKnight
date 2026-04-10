@@ -14,8 +14,6 @@ extends Node3D
 @onready var peasant_timer = 0
 @onready var sorcerer_timer = sorcerer_delay
 
-var sorcerer_counter = []
-
 func _ready():
 	pass
 
@@ -47,20 +45,17 @@ func spawn_peasant():
 	peasant_timer = peasant_cooldown
 
 func spawn_sorcerer():
-	if not sorcerer_counter.size() >= 4:
-		var spawn_location = randi_range(0,get_children().size()-1)
-		spawn_location = get_child(spawn_location).position
-		
-		# Loads enemy scene into PackedScene
-		var scene = load(sorcerer)
-		# Creates an instance of the unit
-		var instance = scene.instantiate()
-			
-		# Sets the unit's position (adjusting it to be above the ground using the child node "Base")
-		# and adds it to the scene tree
-		instance.position = spawn_location - (2*instance.get_node("NavRoot").position)
-		get_tree().root.add_child(instance)
-		
-		sorcerer_counter.append(instance)
+	var spawn_location = randi_range(0,get_children().size()-1)
+	spawn_location = get_child(spawn_location).position
 	
+	# Loads enemy scene into PackedScene
+	var scene = load(sorcerer)
+	# Creates an instance of the unit
+	var instance = scene.instantiate()
+	
+	# Sets the unit's position (adjusting it to be above the ground using the child node "Base")
+	# and adds it to the scene tree
+	instance.position = spawn_location - (2*instance.get_node("NavRoot").position)
+	get_tree().root.add_child(instance)
+
 	sorcerer_timer = sorcerer_cooldown
