@@ -5,7 +5,7 @@ func _ready() -> void:
 
 func clicked():
 	if name == "StartGame":
-		get_tree().change_scene_to_file("res://Maps/level.tscn")
+		get_tree().change_scene_to_file("res://Maps/Main Level/level.tscn")
 	elif name == "Settings":
 		pass
 	elif name == "ExitGame":

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://maieoldkwsi5"]
 
-[ext_resource type="PackedScene" uid="uid://d1oagnssopcyo" path="res://Player/player.tscn" id="1_rdtea"]
-[ext_resource type="PackedScene" uid="uid://dlmbg8leeltp" path="res://Buildings/KOTH Point/koth.tscn" id="2_8m33b"]
-[ext_resource type="Script" uid="uid://cvog87m2oyyr" path="res://AI/spawn_enemies.gd" id="4_wy0yp"]
+[ext_resource type="PackedScene" uid="uid://dlmbg8leeltp" path="res://Buildings/KOTH Point/koth.tscn" id="1_nmidp"]
+[ext_resource type="PackedScene" uid="uid://d1oagnssopcyo" path="res://Player/player.tscn" id="2_ecqro"]
+[ext_resource type="Script" uid="uid://cvog87m2oyyr" path="res://AI/spawn_enemies.gd" id="3_lb4vo"]
+[ext_resource type="AudioStream" uid="uid://dpsov743lly6y" path="res://Maps/Main Level/Resources/SFX_battle_theme.wav" id="4_lb4vo"]
+[ext_resource type="Script" uid="uid://gkw1inhusdhy" path="res://Maps/Main Level/Scripts/level_music.gd" id="6_4kbal"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5xgho"]
 size = Vector3(50, 1, 50)
@@ -19,7 +21,7 @@ size = Vector2(50, 50)
 
 [node name="Level" type="Node3D" unique_id=2013447816]
 
-[node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("2_8m33b")]
+[node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("1_nmidp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 round_length = 120.0
 
@@ -31,7 +33,7 @@ mesh = SubResource("BoxMesh_5xgho")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1137832729]
 shape = SubResource("BoxShape3D_u52ul")
 
-[node name="Player" parent="." unique_id=1806675999 instance=ExtResource("1_rdtea")]
+[node name="Player" parent="." unique_id=1806675999 instance=ExtResource("2_ecqro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1039218464]
@@ -53,9 +55,9 @@ vertices = PackedVector3Array(0.8, 0, 1.8000001, 1.2, 0, -1, -1.5470138, 0, -1.4
 affect_navigation_mesh = true
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=977383990]
-script = ExtResource("4_wy0yp")
-peasant_cooldown = 0.8
-sorcerer_cooldown = 8.0
+script = ExtResource("3_lb4vo")
+peasant_cooldown = 0.6
+sorcerer_cooldown = 7.0
 sorcerer_delay = 40.0
 
 [node name="Point1" type="Node3D" parent="SpawnPoints" unique_id=901588636]
@@ -69,3 +71,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
 
 [node name="Point4" type="Node3D" parent="SpawnPoints" unique_id=1291916039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="." unique_id=1596371844]
+stream = ExtResource("4_lb4vo")
+script = ExtResource("6_4kbal")
+volume = -7.0

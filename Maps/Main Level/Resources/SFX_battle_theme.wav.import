@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpsov743lly6y"
+path="res://.godot/imported/SFX_battle_theme.wav-b25713576d017820252a66e49b464f71.sample"
+
+[deps]
+
+source_file="res://Maps/Main Level/Resources/SFX_battle_theme.wav"
+dest_files=["res://.godot/imported/SFX_battle_theme.wav-b25713576d017820252a66e49b464f71.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
