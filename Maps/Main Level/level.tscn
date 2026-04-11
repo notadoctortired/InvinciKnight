@@ -54,7 +54,7 @@ mesh = SubResource("PlaneMesh_obos6")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=740570022]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0.3, 1, -0.3)
-vertices = PackedVector3Array(0.8, 0, 1.8000001, 1.2, 0, -1, -1.5470138, 0, -1.4186101, -2, 0, 1.4)
+vertices = PackedVector3Array(1.3000001, 0, 2.5, 1.9, 0, -1.4, -1.8000001, 0, -2.1000001, -2.6000001, 0, 1.8000001)
 affect_navigation_mesh = true
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=977383990]

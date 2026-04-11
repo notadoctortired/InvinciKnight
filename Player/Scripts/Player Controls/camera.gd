@@ -12,6 +12,7 @@ extends Camera3D
 
 func _ready():
 	global_position = target_position
+	$PixelateShader.visible = true
 	
 func _process(delta: float):
 	

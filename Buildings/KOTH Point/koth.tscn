@@ -3,9 +3,29 @@
 [ext_resource type="Script" uid="uid://co60xw1njnyvx" path="res://Buildings/KOTH Point/Scripts/koth_timer.gd" id="1_12cdk"]
 [ext_resource type="Script" uid="uid://cvauwfvubvelr" path="res://Buildings/KOTH Point/Scripts/koth_area.gd" id="2_3yu1c"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_abbl6"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_12cdk"]
+size = Vector3(1.3, 0.4, 1.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3yu1c"]
+size = Vector3(0.7, 0.3, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wslbm"]
+size = Vector3(0.1, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7wsx"]
+size = Vector3(0.5, 1, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_abbl6"]
+size = Vector3(2, 0.4, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wslbm"]
+size = Vector3(1.3, 0.3, 1.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7wsx"]
+size = Vector3(0.1, 3, 0.1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_3yu1c"]
+size = Vector3(0.5, 1, 0.01)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3yu1c"]
 radius = 7.0
@@ -13,11 +33,37 @@ radius = 7.0
 [node name="KOTH" type="StaticBody3D" unique_id=1872317103]
 script = ExtResource("1_12cdk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1494263024]
+[node name="Base1" type="CollisionShape3D" parent="." unique_id=253822014]
+shape = SubResource("BoxShape3D_12cdk")
+
+[node name="Base2" type="CollisionShape3D" parent="." unique_id=1130796745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20000002, 0)
+shape = SubResource("BoxShape3D_3yu1c")
+
+[node name="Pole" type="CollisionShape3D" parent="." unique_id=753962157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+shape = SubResource("BoxShape3D_wslbm")
+
+[node name="Flag" type="CollisionShape3D" parent="." unique_id=86602670]
+transform = Transform3D(-4.371139e-08, 0, 1, 1, -4.371139e-08, 4.371139e-08, 4.371139e-08, 1, 1.9106855e-15, 0, 2.8, 0.5)
+shape = SubResource("BoxShape3D_p7wsx")
+
+[node name="Meshes" type="Node3D" parent="." unique_id=492195343]
+
+[node name="Base1" type="MeshInstance3D" parent="Meshes" unique_id=1494263024]
 mesh = SubResource("BoxMesh_abbl6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=253822014]
-shape = SubResource("BoxShape3D_12cdk")
+[node name="Base2" type="MeshInstance3D" parent="Meshes" unique_id=1517478139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20000002, 0)
+mesh = SubResource("BoxMesh_wslbm")
+
+[node name="Pole" type="MeshInstance3D" parent="Meshes" unique_id=1858703694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+mesh = SubResource("BoxMesh_p7wsx")
+
+[node name="Flag" type="MeshInstance3D" parent="Meshes" unique_id=327256886]
+transform = Transform3D(-4.371139e-08, 0, -1, -1, -4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1.9106855e-15, 0, 2.8, 0.5)
+mesh = SubResource("PrismMesh_3yu1c")
 
 [node name="KOTHArea" type="Area3D" parent="." unique_id=1557360487]
 script = ExtResource("2_3yu1c")
