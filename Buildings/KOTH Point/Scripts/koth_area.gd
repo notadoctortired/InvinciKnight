@@ -35,9 +35,7 @@ func _physics_process(delta: float):
 func add_enemy(body):
 	if body.get_child(0).name == "EnemyFlag":
 		enemies.append(enemies.size()+1)
-		print(enemies.size())
 		
 func remove_enemy(body):
 	if body.get_child(0).name == "EnemyFlag":
 		enemies.erase(enemies.size())
-		print(enemies.size())

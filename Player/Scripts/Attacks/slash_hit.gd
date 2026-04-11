@@ -7,6 +7,12 @@ func _ready():
 	visible = false
 	monitoring = false
 	
+func _process(delta: float):
+	if visible:
+		rotation.y += 1
+	if not visible:
+		rotation.y = 0
+	
 func hit(body):
 	var dmg = 10*player.damage_mult
 	if visible:

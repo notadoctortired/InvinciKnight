@@ -68,6 +68,7 @@ func kill_actor():
 func spawn_attack():
 	if is_instance_valid(player):
 		var distance = global_position.distance_to(player.position)
+		print(distance)
 		
 		if distance >= minimum_distance_to_player:
 			var spawn_location = $AttackSpawn.global_position
