@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/Attacks/slasharea.tscn" id="2_btcbx"]
 [ext_resource type="PackedScene" uid="uid://ch83e7xjoac23" path="res://Player/Attacks/crossbow.tscn" id="2_gwnis"]
 [ext_resource type="AudioStream" uid="uid://fkc72fd5s0q8" path="res://Player/Resources/SFX/SFX_walking.mp3" id="4_k53q1"]
+[ext_resource type="Shader" uid="uid://dm6let6lh26rb" path="res://Shaders/SHADER_Pixelate.gdshader" id="6_fhl08"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwnis"]
 albedo_color = Color(0, 1, 0, 1)
@@ -29,6 +30,16 @@ size = Vector3(0.6, 0.6, 0.6)
 
 [sub_resource type="LabelSettings" id="LabelSettings_btcbx"]
 font_size = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
+render_priority = 0
+shader = ExtResource("6_fhl08")
+shader_parameter/pixelation = 0.0050000002375
+shader_parameter/opacity = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_vtle1"]
+material = SubResource("ShaderMaterial_vtle1")
+size = Vector3(10, 10, 1)
 
 [node name="Player" type="Node3D" unique_id=1904113224]
 
@@ -131,7 +142,11 @@ stream = ExtResource("4_k53q1")
 volume_db = -7.0
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1293427983 node_paths=PackedStringArray("target_follow")]
-transform = Transform3D(0, -1, -4.371139e-08, -4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 3, 0)
 script = ExtResource("2_4ntmi")
 target_follow = NodePath("../PlayerBody/CameraSocket")
 follow_speed = 10.0
+
+[node name="PixelateShader" type="MeshInstance3D" parent="Camera" unique_id=1910328918]
+transform = Transform3D(1, 0, 0, 0, 1, 8.351872e-23, 0, 8.351872e-23, 1, 0, 4.371138e-08, -1)
+mesh = SubResource("BoxMesh_vtle1")

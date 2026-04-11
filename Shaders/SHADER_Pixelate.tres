@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cp7c78c83i0a2"]
+
+[ext_resource type="Shader" uid="uid://dm6let6lh26rb" path="res://Shaders/SHADER_Pixelate.gdshader" id="1_ulkwj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ulkwj")
+shader_parameter/pixelation = 0.01
+shader_parameter/opacity = 1.0
