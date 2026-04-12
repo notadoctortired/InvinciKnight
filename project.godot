@@ -13,6 +13,8 @@ config_version=5
 config/name="InvinciKnight"
 run/main_scene="uid://ddtlxnqcmrq4g"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="uid://ck711da1hebnl"
 config/icon="res://icon.svg"
 
 [display]

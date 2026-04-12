@@ -61,6 +61,7 @@ affect_navigation_mesh = true
 script = ExtResource("3_lb4vo")
 peasant_cooldown = 0.8
 sorcerer_cooldown = 8.0
+sorcerer_delay = 35.0
 
 [node name="Point1" type="Node3D" parent="SpawnPoints" unique_id=901588636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
@@ -77,6 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
 [node name="LevelMusic" type="AudioStreamPlayer" parent="." unique_id=1596371844]
 stream = ExtResource("4_lb4vo")
 script = ExtResource("6_4kbal")
-volume = -7.0
+volume = -15.0
 
 [node name="Node3D" type="Node3D" parent="." unique_id=512046530]
