@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b2m8ukxrhomye" path="res://AI/Sorcerer/sorcerer_attack_controller.gd" id="1_yyqp8"]
 [ext_resource type="Material" uid="uid://bka8tmpat51ke" path="res://AI/Sorcerer/Resources/MAT_spell_attack.tres" id="2_a5ddw"]
 [ext_resource type="Script" uid="uid://5j4nipy5m4ww" path="res://AI/Sorcerer/sorcerer_attack_collision.gd" id="3_4g72r"]
+[ext_resource type="AudioStream" uid="uid://bi5wu3hyhpmqv" path="res://AI/Sorcerer/Resources/SFX_FireballTravelling.mp3" id="4_xmg1x"]
+[ext_resource type="AudioStream" uid="uid://cjxtvcvxda64n" path="res://AI/Sorcerer/Resources/SFX_FireballImpact.mp3" id="5_5veyo"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yyqp8"]
 material = ExtResource("2_a5ddw")
@@ -13,6 +15,18 @@ rings = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a5ddw"]
 radius = 0.35
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5veyo"]
+emission_shape = 1
+emission_sphere_radius = 0.4
+spread = 180.0
+initial_velocity_max = 10.0
+collision_mode = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_5veyo"]
+material = ExtResource("2_a5ddw")
+radius = 0.02
+height = 0.04
 
 [node name="SorcererAttack" type="CharacterBody3D" unique_id=1738256479]
 motion_mode = 1
@@ -29,5 +43,25 @@ script = ExtResource("3_4g72r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionDetection" unique_id=97071197]
 shape = SubResource("SphereShape3D_a5ddw")
+
+[node name="Timer" type="Timer" parent="CollisionDetection" unique_id=650169832]
+
+[node name="MovementSFX" type="AudioStreamPlayer3D" parent="." unique_id=112536180]
+stream = ExtResource("4_xmg1x")
+volume_db = -7.0
+max_distance = 100.0
+
+[node name="ImpactSFX" type="AudioStreamPlayer3D" parent="." unique_id=1548093921]
+stream = ExtResource("5_5veyo")
+volume_db = -3.0
+
+[node name="ImpactVFX" type="GPUParticles3D" parent="." unique_id=1656850347]
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5veyo")
+draw_pass_1 = SubResource("SphereMesh_5veyo")
 
 [node name="Timer" type="Timer" parent="." unique_id=1309723077]

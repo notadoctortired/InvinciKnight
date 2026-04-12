@@ -5,10 +5,15 @@ extends CharacterBody3D
 @export var damage: float
 @export var despawn_time: float
 
+# Movement Variables
 var target_pos = null
 
+# Parent Node Variables
 @onready var root = get_tree().root.get_child(0)
 @onready var player = root.get_node("Player/PlayerBody")
+
+# SFX Variables
+@onready var movement_sfx = $MovementSFX
 
 func _ready():
 	$Timer.timeout.connect(kill_actor)
@@ -24,7 +29,17 @@ func actor_setup():
 	await get_tree().physics_frame
 	
 func _physics_process(delta: float):
-	velocity = -global_basis.z*speed*delta
+	if $MeshInstance3D.visible:
+		velocity = -global_basis.z*speed*delta
+	else:
+		velocity = Vector3.ZERO
+	
+	if velocity != Vector3.ZERO and not movement_sfx.playing:
+		movement_sfx.stream.loop = true
+		movement_sfx.play()
+	
+	if not $MeshInstance3D.visible:
+		movement_sfx.stop()
 	
 	move_and_slide()
 

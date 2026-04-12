@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bg7b0qm4th4we" path="res://Player/Scripts/Attacks/arrow_movement.gd" id="1_baoto"]
 [ext_resource type="Script" uid="uid://kkymvafdfy04" path="res://Player/Scripts/Attacks/arrow_hit.gd" id="1_vxvc4"]
+[ext_resource type="AudioStream" uid="uid://joi4wicdd858" path="res://Player/Resources/SFX/SFX_BoltImpact.mp3" id="3_ki65h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baoto"]
 albedo_color = Color(0.18540591, 0.0864945, 0, 1)
@@ -28,5 +29,9 @@ script = ExtResource("1_vxvc4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollissionDetection" unique_id=1262456471]
 shape = SubResource("BoxShape3D_vxvc4")
+
+[node name="ImpactSFX" type="AudioStreamPlayer3D" parent="." unique_id=2074115722]
+stream = ExtResource("3_ki65h")
+volume_db = -14.0
 
 [node name="Timer" type="Timer" parent="." unique_id=253891775]

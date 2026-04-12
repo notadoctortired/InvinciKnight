@@ -3,6 +3,8 @@ extends CharacterBody3D
 @export_category("Player Values")
 @export var health: float
 @export var speed: float
+@export var sfx_variance_min: float
+@export var sfx_variance_max: float
 
 @export_category("Attack Values")
 @export var damage_mult: float
@@ -19,8 +21,10 @@ var crossbow_active = false
 @onready var healthbar = $PlayerUI/Healthbar
 
 # SFX Variables
-@onready var walking_sfx = $WalkingSFX
+@onready var walking_sfx = $SFX/WalkingSFX
 var walking_playback = 0
+@onready var sword_sfx = $SFX/SwordSwooshSFX
+@onready var crossbow_sfx = $SFX/CrossbowFiringSFX
 
 # Mesh / Rotation Variables
 @onready var meshes = $Meshes
@@ -82,13 +86,17 @@ func swing_attack():
 	slash.visible = true
 	slash.monitoring = true 
 	
+	sword_sfx.pitch_scale = 1 + randf_range(sfx_variance_min,sfx_variance_max)
+	sword_sfx.play()
 	attack_timer.start(slash_cooldown)
 	
 func crossbow_attack():
 	if not crossbow.visible:
 		crossbow.fire_arrows()
 		crossbow.visible = true
-		
+	
+	crossbow_sfx.pitch_scale = 1 + randf_range(sfx_variance_min,sfx_variance_max)
+	crossbow_sfx.play()
 	attack_timer.start(crossbow_cooldown)
 	
 func hide_attacks():
