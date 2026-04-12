@@ -39,8 +39,11 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if health <= 0:
 		kill_actor()
+
+	if health < 100:
+		health += 0.02
 	
-	healthbar.value = health
+	healthbar.value = lerp(healthbar.value, health, 0.4)
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta

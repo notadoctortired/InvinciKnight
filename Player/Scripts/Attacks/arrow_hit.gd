@@ -18,3 +18,7 @@ func hit(body):
 		
 		impact_sfx.pitch_scale = 1 + randf_range(-0.15,0.15)
 		impact_sfx.play()
+	elif body.has_method("hit") or body.has_method("_input"):
+		print("ignoring!")
+	else:
+		arrow.kill_actor()
