@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://do2luek0t01dg"]
 
 [ext_resource type="Script" uid="uid://qhlax625v0" path="res://Player/Scripts/button_UI.gd" id="1_qsi4j"]
+[ext_resource type="FontFile" uid="uid://bmw6rn2m425ey" path="res://Fonts/pixel_operator/PixelOperatorHB.ttf" id="1_y6lkb"]
+[ext_resource type="FontFile" uid="uid://ok152dfg4vxq" path="res://Fonts/pixel_operator/PixelOperatorMonoHB.ttf" id="3_3txtw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_guw0i"]
+font = ExtResource("1_y6lkb")
 font_size = 109
 shadow_size = 12
 shadow_color = Color(0, 0, 0, 0.7254902)
 shadow_offset = Vector2(3, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1cjr5"]
+font = ExtResource("3_3txtw")
 font_size = 29
 
 [node name="Victory" type="Control" unique_id=589828803]

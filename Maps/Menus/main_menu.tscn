@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://ddtlxnqcmrq4g"]
 
 [ext_resource type="Script" uid="uid://qhlax625v0" path="res://Player/Scripts/button_UI.gd" id="1_lmgjg"]
+[ext_resource type="FontFile" uid="uid://bmw6rn2m425ey" path="res://Fonts/pixel_operator/PixelOperatorHB.ttf" id="1_u6ki8"]
+[ext_resource type="FontFile" uid="uid://ok152dfg4vxq" path="res://Fonts/pixel_operator/PixelOperatorMonoHB.ttf" id="2_2468r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ilgt"]
+font = ExtResource("1_u6ki8")
 font_size = 109
 shadow_size = 12
 shadow_color = Color(0, 0, 0, 0.7254902)
 shadow_offset = Vector2(3, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lmgjg"]
+font = ExtResource("2_2468r")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_doqif"]
+font = ExtResource("2_2468r")
 font_size = 29
 
 [node name="MainMenu" type="Control" unique_id=60844112]

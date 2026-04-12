@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/Player Controls/camera.gd" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/Attacks/slasharea.tscn" id="2_btcbx"]
 [ext_resource type="PackedScene" uid="uid://ch83e7xjoac23" path="res://Player/Attacks/crossbow.tscn" id="2_gwnis"]
+[ext_resource type="FontFile" uid="uid://c8wnina7oaasa" path="res://Fonts/pixel_operator/PixelOperatorMonoHB8.ttf" id="4_00tjw"]
 [ext_resource type="AudioStream" uid="uid://fkc72fd5s0q8" path="res://Player/Resources/SFX/SFX_Walking.mp3" id="4_k53q1"]
 [ext_resource type="AudioStream" uid="uid://dba82bsft7sff" path="res://Player/Resources/SFX/SFX_SwordSwoosh.mp3" id="5_vtle1"]
 [ext_resource type="Shader" uid="uid://dm6let6lh26rb" path="res://Shaders/SHADER_Pixelate.gdshader" id="6_fhl08"]
@@ -31,6 +32,7 @@ size = Vector3(0.6, 0.6, 0.6)
 size = Vector3(0.6, 0.6, 0.6)
 
 [sub_resource type="LabelSettings" id="LabelSettings_btcbx"]
+font = ExtResource("4_00tjw")
 font_size = 25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
@@ -91,7 +93,8 @@ grow_vertical = 2
 
 [node name="RoundTimer" type="Label" parent="PlayerBody/PlayerUI" unique_id=496177885]
 layout_mode = 0
-offset_right = 295.0
+offset_left = 3.0
+offset_right = 478.0
 offset_bottom = 64.0
 text = "Time Remaining: n/a"
 label_settings = SubResource("LabelSettings_btcbx")
