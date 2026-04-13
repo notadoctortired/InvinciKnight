@@ -4,32 +4,15 @@
 [ext_resource type="Script" uid="uid://chnd2c43hqrkc" path="res://Player/Scripts/Player Controls/camera.gd" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://db3ceusxpyfy8" path="res://Player/Attacks/slasharea.tscn" id="2_btcbx"]
 [ext_resource type="PackedScene" uid="uid://ch83e7xjoac23" path="res://Player/Attacks/crossbow.tscn" id="2_gwnis"]
+[ext_resource type="PackedScene" uid="uid://bvdi8f7tgbry8" path="res://Player/Resources/Model/player_model.glb" id="3_x3vf3"]
 [ext_resource type="FontFile" uid="uid://c8wnina7oaasa" path="res://Fonts/pixel_operator/PixelOperatorMonoHB8.ttf" id="4_00tjw"]
 [ext_resource type="AudioStream" uid="uid://fkc72fd5s0q8" path="res://Player/Resources/SFX/SFX_Walking.mp3" id="4_k53q1"]
 [ext_resource type="AudioStream" uid="uid://dba82bsft7sff" path="res://Player/Resources/SFX/SFX_SwordSwoosh.mp3" id="5_vtle1"]
 [ext_resource type="Shader" uid="uid://dm6let6lh26rb" path="res://Shaders/SHADER_Pixelate.gdshader" id="6_fhl08"]
 [ext_resource type="AudioStream" uid="uid://cylwqhwt6ahnk" path="res://Player/Resources/SFX/SFX_CrossbowFiring.mp3" id="6_od3ui"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwnis"]
-albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
-material = SubResource("StandardMaterial3D_gwnis")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btcbx"]
-albedo_color = Color(0, 1, 1, 1)
-emission_enabled = true
-emission = Color(0, 0, 1, 1)
-emission_energy_multiplier = 7.9
-
-[sub_resource type="BoxMesh" id="BoxMesh_4ntmi"]
-material = SubResource("StandardMaterial3D_btcbx")
-size = Vector3(0.6, 0.6, 0.6)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
-size = Vector3(0.6, 0.6, 0.6)
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3vf3"]
+size = Vector3(0.65, 2.5, 0.65)
 
 [sub_resource type="LabelSettings" id="LabelSettings_btcbx"]
 font = ExtResource("4_00tjw")
@@ -61,27 +44,20 @@ crossbow_cooldown = 1.0
 [node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
+[node name="PlayerCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=1072145338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.980232e-08, 0.35000014, 2.9802322e-08)
+shape = SubResource("BoxShape3D_x3vf3")
+
 [node name="Meshes" type="Node3D" parent="PlayerBody" unique_id=768892921]
 
-[node name="PlaceholderMesh" type="MeshInstance3D" parent="PlayerBody/Meshes" unique_id=57317801]
-mesh = SubResource("CapsuleMesh_hvfyp")
-
-[node name="PlaceholderHeadMesh" type="MeshInstance3D" parent="PlayerBody/Meshes" unique_id=793233844]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.742278e-09, 0.40000007, -0.4)
-mesh = SubResource("BoxMesh_4ntmi")
+[node name="PlayerModel" parent="PlayerBody/Meshes" unique_id=732030915 instance=ExtResource("3_x3vf3")]
+transform = Transform3D(-0.06, 0, -9.059748e-09, 0, 0.06, 0, 9.059748e-09, 0, -0.06, 0, -0.90000004, 0)
 
 [node name="Crossbow" parent="PlayerBody/Meshes" unique_id=1755181535 instance=ExtResource("2_gwnis")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6226834e-08, 0, -0.6)
-
-[node name="PlaceholderCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=345195676]
-shape = SubResource("CapsuleShape3D_l8h54")
-
-[node name="PlaceholderHeadCollision" type="CollisionShape3D" parent="PlayerBody" unique_id=648561467]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40000007, -0.2)
-shape = SubResource("BoxShape3D_btcbx")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0597974e-08, 0.6, -0.70000005)
 
 [node name="SlashArea" parent="PlayerBody" unique_id=2015310752 instance=ExtResource("2_btcbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="PlayerUI" type="Control" parent="PlayerBody" unique_id=1361119872]
 layout_mode = 3
@@ -149,6 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 [node name="WalkingSFX" type="AudioStreamPlayer3D" parent="PlayerBody/SFX" unique_id=1925880877]
 stream = ExtResource("4_k53q1")
 volume_db = -7.0
+pitch_scale = 0.77
 
 [node name="SwordSwooshSFX" type="AudioStreamPlayer3D" parent="PlayerBody/SFX" unique_id=583488534]
 stream = ExtResource("5_vtle1")

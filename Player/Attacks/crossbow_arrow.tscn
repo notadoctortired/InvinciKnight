@@ -12,7 +12,7 @@ material = SubResource("StandardMaterial3D_baoto")
 size = Vector3(0.2, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxvc4"]
-size = Vector3(0.6, 0.6, 1)
+size = Vector3(0.6, 2.6000001, 1)
 
 [node name="CrossbowArrow" type="CharacterBody3D" unique_id=1370694056]
 motion_mode = 1
@@ -28,6 +28,7 @@ mesh = SubResource("BoxMesh_hvrgq")
 script = ExtResource("1_vxvc4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollissionDetection" unique_id=1262456471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10000005, 0)
 shape = SubResource("BoxShape3D_vxvc4")
 
 [node name="ImpactSFX" type="AudioStreamPlayer3D" parent="." unique_id=2074115722]

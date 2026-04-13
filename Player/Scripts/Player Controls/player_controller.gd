@@ -26,10 +26,18 @@ var walking_playback = 0
 @onready var sword_sfx = $SFX/SwordSwooshSFX
 @onready var crossbow_sfx = $SFX/CrossbowFiringSFX
 
-# Mesh / Rotation Variables
+# Mesh / Animation Variables
 @onready var meshes = $Meshes
+@onready var animation_player = meshes.get_node("PlayerModel/AnimationPlayer")
+var anim: Animation
 
 func _ready():
+	# Default Anim Player settings on load
+	animation_player.playback_default_blend_time = .3
+	animation_player.play(&"Idle")
+	anim = animation_player.get_animation(&"Idle")
+	anim.loop_mode = Animation.LOOP_LINEAR
+	
 	attack_timer.timeout.connect(hide_attacks) # Catch-all function that hides every weapon
 	# once it has been triggered
 	healthbar.visible = false
@@ -63,9 +71,19 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity != Vector3.ZERO and not walking_sfx.playing:
 		walking_sfx.play(walking_playback)
+		
+		animation_player.play(&"Running In-place")
+		anim = animation_player.get_animation(&"Running In-place")
+		anim.loop_mode = Animation.LOOP_LINEAR
+		
+		
 	elif velocity == Vector3.ZERO and walking_sfx.playing:
 		walking_playback = walking_sfx.get_playback_position()
 		walking_sfx.stop()
+		
+		animation_player.play(&"Idle")
+		anim = animation_player.get_animation(&"Idle")
+		anim.loop_mode = Animation.LOOP_LINEAR
 	
 	move_and_slide()
 
