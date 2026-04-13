@@ -10,3 +10,5 @@ func clicked():
 		pass
 	elif name == "ExitGame":
 		get_tree().quit(0)
+	elif name == "RestartGame":
+		get_tree().change_scene_to_file("res://Maps/Menus/main_menu.tscn")

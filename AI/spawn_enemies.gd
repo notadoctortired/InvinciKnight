@@ -45,7 +45,7 @@ func spawn_peasant():
 	# Sets the unit's position (adjusting it to be above the ground using the child node "Base")
 	# and adds it to the scene tree
 	instance.position = spawn_location - (2*instance.get_node("NavRoot").position)
-	get_tree().root.add_child(instance)
+	get_tree().root.get_child(0).add_child(instance)
 	
 	peasant_timer = peasant_cooldown
 
@@ -61,6 +61,6 @@ func spawn_sorcerer():
 	# Sets the unit's position (adjusting it to be above the ground using the child node "Base")
 	# and adds it to the scene tree
 	instance.position = spawn_location - (2*instance.get_node("NavRoot").position)
-	get_tree().root.add_child(instance)
+	get_tree().root.get_child(0).add_child(instance)
 
 	sorcerer_timer = sorcerer_cooldown

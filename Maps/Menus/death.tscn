@@ -46,7 +46,7 @@ label_settings = SubResource("LabelSettings_guw0i")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExitGame" type="Button" parent="." unique_id=948568700]
+[node name="RestartGame" type="Button" parent="." unique_id=948568700]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mmu8o")
 
-[node name="TextureRect" type="TextureRect" parent="ExitGame" unique_id=856550603]
+[node name="TextureRect" type="TextureRect" parent="RestartGame" unique_id=856550603]
 layout_mode = 0
 offset_left = 4.45
 offset_top = 4.5
