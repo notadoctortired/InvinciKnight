@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dpsov743lly6y"
-path="res://.godot/imported/SFX_battle_theme.wav-b25713576d017820252a66e49b464f71.sample"
+path="res://.godot/imported/SFX_battle_theme.wav-a7ab4ad34af32118935dd1ac514d6b88.sample"
 
 [deps]
 
-source_file="res://Maps/Main Level/Resources/SFX_battle_theme.wav"
-dest_files=["res://.godot/imported/SFX_battle_theme.wav-b25713576d017820252a66e49b464f71.sample"]
+source_file="res://Exports/Web/Music/SFX_battle_theme.wav"
+dest_files=["res://.godot/imported/SFX_battle_theme.wav-a7ab4ad34af32118935dd1ac514d6b88.sample"]
 
 [params]
 

@@ -3,7 +3,7 @@ extends AudioStreamPlayer
 @export_category("Values")
 @export var volume: float
 
-const SORCERER_TRACK = preload("res://Maps/Main Level/Resources/SFX_battle_theme_sorcerers.wav")
+const SORCERER_TRACK = preload("res://Music/SFX_battle_theme_sorcerers.wav")
 
 var playback = 0
 @onready var player = get_tree().root.get_child(0).get_node("Player/PlayerBody")
@@ -16,7 +16,6 @@ func _ready():
 	stream.set_loop_end(samples)
 	
 	play()
-	
 
 func _process(delta: float):
 	if playing:

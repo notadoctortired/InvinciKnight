@@ -239,6 +239,7 @@ pitch_scale = 0.77
 [node name="SwordSwooshSFX" type="AudioStreamPlayer3D" parent="PlayerBody/SFX" unique_id=583488534]
 stream = ExtResource("5_vtle1")
 volume_db = -20.0
+pitch_scale = 0.8
 
 [node name="CrossbowFiringSFX" type="AudioStreamPlayer3D" parent="PlayerBody/SFX" unique_id=1481839393]
 stream = ExtResource("6_od3ui")
