@@ -7,10 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://dpsov743lly6y" path="res://Maps/Main Level/Resources/SFX_battle_theme.wav" id="4_lb4vo"]
 [ext_resource type="Script" uid="uid://gkw1inhusdhy" path="res://Maps/Main Level/Scripts/level_music.gd" id="6_4kbal"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5by8i"]
+size = Vector3(100, 100, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_5xgho"]
 lightmap_size_hint = Vector2i(1004, 516)
 material = ExtResource("2_5by8i")
-size = Vector3(100, 1, 100)
+size = Vector3(200, 1, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u52ul"]
 size = Vector3(100, 1, 100)
@@ -27,6 +30,24 @@ size = Vector2(100, 100)
 [node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("1_nmidp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 round_length = 125.0
+
+[node name="BoundingBox" type="StaticBody3D" parent="." unique_id=1211270161]
+
+[node name="North" type="CollisionShape3D" parent="BoundingBox" unique_id=1731336556]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -50, 0, 0)
+shape = SubResource("BoxShape3D_5by8i")
+
+[node name="East" type="CollisionShape3D" parent="BoundingBox" unique_id=1611325974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+shape = SubResource("BoxShape3D_5by8i")
+
+[node name="South" type="CollisionShape3D" parent="BoundingBox" unique_id=1033956679]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 50, 0, 0)
+shape = SubResource("BoxShape3D_5by8i")
+
+[node name="West" type="CollisionShape3D" parent="BoundingBox" unique_id=415461031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+shape = SubResource("BoxShape3D_5by8i")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1815422157]
 
@@ -61,7 +82,6 @@ affect_navigation_mesh = true
 script = ExtResource("3_lb4vo")
 peasant_cooldown = 0.7
 sorcerer_cooldown = 5.0
-sorcerer_delay = 35.0
 
 [node name="Point1" type="Node3D" parent="SpawnPoints" unique_id=901588636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
@@ -73,6 +93,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
 
 [node name="Point4" type="Node3D" parent="SpawnPoints" unique_id=1291916039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+
+[node name="SorcererSpawnPoints" type="Node3D" parent="." unique_id=64501980]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Point1" type="Node3D" parent="SorcererSpawnPoints" unique_id=547729307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
+
+[node name="Point2" type="Node3D" parent="SorcererSpawnPoints" unique_id=1172217434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
+
+[node name="Point3" type="Node3D" parent="SorcererSpawnPoints" unique_id=972824203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
+
+[node name="Point4" type="Node3D" parent="SorcererSpawnPoints" unique_id=1347678890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="." unique_id=1596371844]

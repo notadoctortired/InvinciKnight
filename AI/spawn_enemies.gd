@@ -8,11 +8,16 @@ extends Node3D
 @export var sorcerer_cooldown: float
 @export var sorcerer_delay: float
 
+# Enemy nodes
 @onready var peasant = "res://AI/Peasant/peasant.tscn"
 @onready var sorcerer = "res://AI/Sorcerer/sorcerer.tscn"
 
+# Timers for spawning enemies
 @onready var peasant_timer = 0
 @onready var sorcerer_timer = sorcerer_delay
+
+# Separate spawn points for sorcerers
+@onready var sorcerer_spawn_points = get_parent().get_node("SorcererSpawnPoints")
 
 func _ready():
 	pass
@@ -30,7 +35,9 @@ func _process(delta: float):
 
 func spawn_peasant():
 	var spawn_location = randi_range(0,get_children().size()-1)
-	spawn_location = get_child(spawn_location).position
+	spawn_location = get_child(spawn_location).global_position
+	
+	print(spawn_location)
 	
 	# Loads enemy scene into PackedScene
 	var scene = load(peasant)
@@ -45,8 +52,10 @@ func spawn_peasant():
 	peasant_timer = peasant_cooldown
 
 func spawn_sorcerer():
-	var spawn_location = randi_range(0,get_children().size()-1)
-	spawn_location = get_child(spawn_location).position
+	var spawn_location = randi_range(0,sorcerer_spawn_points.get_children().size()-1)
+	spawn_location = sorcerer_spawn_points.get_child(spawn_location).global_position
+	
+	print(spawn_location)
 	
 	# Loads enemy scene into PackedScene
 	var scene = load(sorcerer)

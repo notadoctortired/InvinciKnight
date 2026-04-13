@@ -4,7 +4,6 @@ extends CharacterBody3D
 @export var speed: float
 @export var health: float
 @export var attack_cooldown: float
-@export var minimum_distance_to_player: float
 
 var move_target_pos = Vector3(0,0,0)
 
@@ -67,17 +66,13 @@ func kill_actor():
 	
 func spawn_attack():
 	if is_instance_valid(player):
-		var distance = global_position.distance_to(player.position)
-		print(distance)
+		var spawn_location = $AttackSpawn.global_position
 		
-		if distance >= minimum_distance_to_player:
-			var spawn_location = $AttackSpawn.global_position
-			
-			var scene = load("res://AI/Sorcerer/sorcerer_attack.tscn")
-			var instance = scene.instantiate()
-			
-			instance.position = spawn_location
-			get_tree().root.add_child(instance)
+		var scene = load("res://AI/Sorcerer/sorcerer_attack.tscn")
+		var instance = scene.instantiate()
+		
+		instance.position = spawn_location
+		get_tree().root.add_child(instance)
 	
 func damage(dmg):
 	health -= dmg

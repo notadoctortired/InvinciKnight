@@ -18,7 +18,9 @@ extends CharacterBody3D
 var crossbow_active = false
 
 # UI Variables
+@onready var player_ui = $PlayerUI
 @onready var healthbar = $PlayerUI/Healthbar
+@onready var healthbar_texture = $PlayerUI/HealthbarTex
 
 # SFX Variables
 @onready var walking_sfx = $SFX/WalkingSFX
@@ -41,6 +43,7 @@ func _ready():
 	attack_timer.timeout.connect(hide_attacks) # Catch-all function that hides every weapon
 	# once it has been triggered
 	healthbar.visible = false
+	healthbar_texture.visible = false
 	
 	walking_sfx.stream.loop = true
 
@@ -97,9 +100,23 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("toggle_attack"):
 		crossbow_active = !crossbow_active
 		
+		if crossbow_active:
+			var selected_attack = player_ui.get_node("CrossbowAttack/Unselected")
+			var unselected_attack = player_ui.get_node("SwordAttack/Unselected")
+			
+			selected_attack.visible = false
+			unselected_attack.visible = true
+		elif not crossbow_active:
+			var selected_attack = player_ui.get_node("SwordAttack/Unselected")
+			var unselected_attack = player_ui.get_node("CrossbowAttack/Unselected")
+			
+			selected_attack.visible = false
+			unselected_attack.visible = true
+		
 func damage(dmg: float):
 	if not healthbar.visible:
 		healthbar.visible = true
+		healthbar_texture.visible = true
 	
 	health -= dmg
 	

@@ -8,8 +8,14 @@
 [ext_resource type="FontFile" uid="uid://c8wnina7oaasa" path="res://Fonts/pixel_operator/PixelOperatorMonoHB8.ttf" id="4_00tjw"]
 [ext_resource type="AudioStream" uid="uid://fkc72fd5s0q8" path="res://Player/Resources/SFX/SFX_Walking.mp3" id="4_k53q1"]
 [ext_resource type="AudioStream" uid="uid://dba82bsft7sff" path="res://Player/Resources/SFX/SFX_SwordSwoosh.mp3" id="5_vtle1"]
+[ext_resource type="Texture2D" uid="uid://d2l8t0l8myowa" path="res://UI/TEX_CaptureBar.png" id="6_5htga"]
+[ext_resource type="Texture2D" uid="uid://cnkeaoleohcab" path="res://UI/TEX_Healthbar.png" id="6_apopc"]
 [ext_resource type="Shader" uid="uid://dm6let6lh26rb" path="res://Shaders/SHADER_Pixelate.gdshader" id="6_fhl08"]
 [ext_resource type="AudioStream" uid="uid://cylwqhwt6ahnk" path="res://Player/Resources/SFX/SFX_CrossbowFiring.mp3" id="6_od3ui"]
+[ext_resource type="FontFile" uid="uid://ok152dfg4vxq" path="res://Fonts/pixel_operator/PixelOperatorMonoHB.ttf" id="6_p5o4e"]
+[ext_resource type="Texture2D" uid="uid://conjow02y7c54" path="res://UI/TEX_SwordAttack.png" id="9_dkpta"]
+[ext_resource type="Texture2D" uid="uid://0je7at5blpxi" path="res://UI/TEX_CrossbowAttack.png" id="10_lfmf2"]
+[ext_resource type="Texture2D" uid="uid://dasmkp1dcu107" path="res://UI/TEX_Unselected.png" id="10_pisgm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3vf3"]
 size = Vector3(0.65, 2.5, 0.65)
@@ -18,10 +24,14 @@ size = Vector3(0.65, 2.5, 0.65)
 font = ExtResource("4_00tjw")
 font_size = 25
 
+[sub_resource type="Theme" id="Theme_gu6f8"]
+default_font = ExtResource("6_p5o4e")
+default_font_size = 32
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
 render_priority = 0
 shader = ExtResource("6_fhl08")
-shader_parameter/pixelation = 0.0050000002375
+shader_parameter/pixelation = 0.00400000019
 shader_parameter/opacity = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vtle1"]
@@ -77,6 +87,21 @@ label_settings = SubResource("LabelSettings_btcbx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RoundTimer2" type="Label" parent="PlayerBody/PlayerUI" unique_id=1866362022]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 191.0
+offset_top = -266.0
+offset_right = 288.0
+offset_bottom = -202.0
+grow_vertical = 0
+text = "Q/E"
+label_settings = SubResource("LabelSettings_btcbx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CaptureProgress" type="ProgressBar" parent="PlayerBody/PlayerUI" unique_id=1240196419]
 layout_mode = 1
 anchors_preset = 7
@@ -84,25 +109,109 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -381.5
-offset_top = -54.0
-offset_right = 381.5
+offset_left = -258.0
+offset_top = -80.0
+offset_right = 245.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_gu6f8")
+
+[node name="CaptureTex" type="TextureRect" parent="PlayerBody/PlayerUI" unique_id=1093569064]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -275.52002
+offset_top = -92.0
+offset_right = 275.52002
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_5htga")
+expand_mode = 1
 
 [node name="Healthbar" type="ProgressBar" parent="PlayerBody/PlayerUI" unique_id=1704188407]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 1)
+modulate = Color(0.14117648, 0.45882353, 0.23137255, 1)
+self_modulate = Color(0.86055845, 2.343022, 1.2815049, 1)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -500.0
-offset_bottom = 30.0
+offset_left = -428.0
+offset_top = 51.0
+offset_right = -27.0
+offset_bottom = 92.0
 grow_horizontal = 0
 value = 100.0
 fill_mode = 1
 show_percentage = false
+
+[node name="HealthbarTex" type="TextureRect" parent="PlayerBody/PlayerUI" unique_id=165337801]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -455.1031
+offset_bottom = 135.0
+grow_horizontal = 0
+texture = ExtResource("6_apopc")
+expand_mode = 1
+
+[node name="SwordAttack" type="TextureRect" parent="PlayerBody/PlayerUI" unique_id=1918930130]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 126.0
+offset_top = -191.0
+offset_right = 264.0
+offset_bottom = -53.0
+grow_vertical = 0
+texture = ExtResource("9_dkpta")
+expand_mode = 1
+
+[node name="Unselected" type="TextureRect" parent="PlayerBody/PlayerUI/SwordAttack" unique_id=171285564]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -126.0
+offset_right = 127.0
+offset_bottom = -11.0
+grow_vertical = 0
+texture = ExtResource("10_pisgm")
+expand_mode = 1
+
+[node name="CrossbowAttack" type="TextureRect" parent="PlayerBody/PlayerUI" unique_id=1384010514]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -342.0
+offset_right = 159.0
+offset_bottom = -204.0
+grow_vertical = 0
+texture = ExtResource("10_lfmf2")
+expand_mode = 1
+
+[node name="Unselected" type="TextureRect" parent="PlayerBody/PlayerUI/CrossbowAttack" unique_id=848408293]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -127.0
+offset_right = 126.0
+offset_bottom = -12.0
+grow_vertical = 0
+texture = ExtResource("10_pisgm")
+expand_mode = 1
 
 [node name="NavPointsSorcerer" type="Node3D" parent="PlayerBody" unique_id=1396170878]
 
@@ -143,5 +252,4 @@ follow_speed = 10.0
 
 [node name="PixelateShader" type="MeshInstance3D" parent="Camera" unique_id=1910328918]
 transform = Transform3D(1, 0, 0, 0, 1, 8.351872e-23, 0, 8.351872e-23, 1, 0, 4.371138e-08, -1)
-visible = false
 mesh = SubResource("BoxMesh_vtle1")
