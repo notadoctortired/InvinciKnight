@@ -37,8 +37,6 @@ func spawn_peasant():
 	var spawn_location = randi_range(0,get_children().size()-1)
 	spawn_location = get_child(spawn_location).global_position
 	
-	print(spawn_location)
-	
 	# Loads enemy scene into PackedScene
 	var scene = load(peasant)
 	# Creates an instance of the unit
@@ -54,8 +52,6 @@ func spawn_peasant():
 func spawn_sorcerer():
 	var spawn_location = randi_range(0,sorcerer_spawn_points.get_children().size()-1)
 	spawn_location = sorcerer_spawn_points.get_child(spawn_location).global_position
-	
-	print(spawn_location)
 	
 	# Loads enemy scene into PackedScene
 	var scene = load(sorcerer)

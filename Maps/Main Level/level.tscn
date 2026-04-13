@@ -93,6 +93,7 @@ affect_navigation_mesh = true
 script = ExtResource("3_lb4vo")
 peasant_cooldown = 0.7
 sorcerer_cooldown = 5.0
+sorcerer_delay = 35.0
 
 [node name="Point1" type="Node3D" parent="SpawnPoints" unique_id=901588636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
