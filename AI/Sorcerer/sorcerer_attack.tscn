@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cjxtvcvxda64n" path="res://AI/Sorcerer/Resources/SFX_FireballImpact.mp3" id="5_5veyo"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yyqp8"]
+lightmap_size_hint = Vector2i(12, 7)
 material = ExtResource("2_a5ddw")
+add_uv2 = true
 radius = 0.35
 height = 0.7
 radial_segments = 10

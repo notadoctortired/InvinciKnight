@@ -6,7 +6,9 @@
 albedo_color = Color(0.85604864, 0.49588835, 0.17963359, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x2occ"]
+lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_bt1o5")
+add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bt1o5"]
 

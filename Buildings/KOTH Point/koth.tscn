@@ -31,7 +31,9 @@ material = ExtResource("3_p7wsx")
 size = Vector3(0.1, 3, 0.1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_3yu1c"]
+lightmap_size_hint = Vector2i(6, 16)
 material = ExtResource("4_yedga")
+add_uv2 = true
 size = Vector3(0.5, 1, 0.01)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3yu1c"]

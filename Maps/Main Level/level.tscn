@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://maieoldkwsi5"]
 
+[ext_resource type="ArrayOccluder3D" uid="uid://sn70mgcja2sf" path="res://Maps/Main Level/Resources/level.occ" id="1_fc78y"]
 [ext_resource type="PackedScene" uid="uid://dlmbg8leeltp" path="res://Buildings/KOTH Point/koth.tscn" id="1_nmidp"]
+[ext_resource type="LightmapGIData" uid="uid://rbkigfyrp456" path="res://Maps/Main Level/Resources/level.lmbake" id="2_4kbal"]
 [ext_resource type="Material" uid="uid://2nwmt1ss6v1s" path="res://Maps/Main Level/Resources/MAT_grass.tres" id="2_5by8i"]
 [ext_resource type="PackedScene" uid="uid://d1oagnssopcyo" path="res://Player/player.tscn" id="2_ecqro"]
 [ext_resource type="Script" uid="uid://cvog87m2oyyr" path="res://AI/spawn_enemies.gd" id="3_lb4vo"]
@@ -11,21 +13,30 @@
 size = Vector3(100, 100, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5xgho"]
-lightmap_size_hint = Vector2i(1004, 516)
+lightmap_size_hint = Vector2i(2004, 1016)
 material = ExtResource("2_5by8i")
+add_uv2 = true
 size = Vector3(200, 1, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u52ul"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_obos6"]
-vertices = PackedVector3Array(-49.5, 1.1, -0.25, -2, 1.1, -0.25, -1.75, 1.1, -1.75, 0.25, 1.1, -2, 0.25, 1.1, -49.5, -49.5, 1.1, -49.5, 1.75, 1.1, -1.75, 2, 1.1, 0.5, 49.5, 1.1, 0.25, 49.5, 1.1, -49.5, -0.25, 1.1, 49.5, -0.5, 1.1, 2, -1.75, 1.1, 1.75, -49.5, 1.1, 49.5, 1.75, 1.1, 1.75, 49.5, 1.1, 49.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(6, 3, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 4), PackedInt32Array(12, 11, 10), PackedInt32Array(1, 12, 0), PackedInt32Array(0, 12, 13), PackedInt32Array(13, 12, 10), PackedInt32Array(14, 7, 8), PackedInt32Array(11, 14, 10), PackedInt32Array(10, 14, 15), PackedInt32Array(15, 14, 8)]
+vertices = PackedVector3Array(-2, 1.1, -2.5, 0.25, 1.1, -2.5, 0.25, 1.1, -49.5, -49.5, 1.1, -1.75, -2.5, 1.1, -1.75, -49.5, 1.1, -49.5, 2.25, 1.1, -2.5, 2.5, 1.1, 0.5, 49.5, 1.1, 0.5, 49.5, 1.1, -49.5, -49.5, 1.1, 1, -2.25, 1.1, 0.75, 2.5, 1.1, 2.25, -0.25, 1.1, 2.5, -0.25, 1.1, 49.5, 49.5, 1.1, 49.5, -2, 1.1, 2.5, -49.5, 1.1, 49.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 0), PackedInt32Array(0, 3, 5), PackedInt32Array(0, 5, 2), PackedInt32Array(6, 1, 2), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 2), PackedInt32Array(4, 11, 3), PackedInt32Array(3, 11, 10), PackedInt32Array(12, 7, 8), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 8), PackedInt32Array(16, 13, 14), PackedInt32Array(11, 16, 10), PackedInt32Array(10, 16, 17), PackedInt32Array(17, 16, 14)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_obos6"]
 size = Vector2(100, 100)
 
 [node name="Level" type="Node3D" unique_id=2013447816]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=1892138138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
+occluder = ExtResource("1_fc78y")
+bake_mask = 4294443007
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=549472412]
+light_data = ExtResource("2_4kbal")
 
 [node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("1_nmidp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
