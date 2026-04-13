@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cvog87m2oyyr" path="res://AI/spawn_enemies.gd" id="3_lb4vo"]
 [ext_resource type="AudioStream" uid="uid://dpsov743lly6y" path="res://Music/SFX_battle_theme.wav" id="4_lb4vo"]
 [ext_resource type="Script" uid="uid://gkw1inhusdhy" path="res://Maps/Main Level/Scripts/level_music.gd" id="6_4kbal"]
+[ext_resource type="AudioStream" uid="uid://iila5iearo13" path="res://Music/SFX_battle_theme_sorcerers.wav" id="9_enm6o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5by8i"]
 size = Vector3(100, 100, 1)
@@ -124,5 +125,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="." unique_id=1596371844]
 stream = ExtResource("4_lb4vo")
+script = ExtResource("6_4kbal")
+volume = -10.0
+
+[node name="LevelMusicSorcerer" type="AudioStreamPlayer" parent="." unique_id=1078329656]
+stream = ExtResource("9_enm6o")
 script = ExtResource("6_4kbal")
 volume = -10.0
