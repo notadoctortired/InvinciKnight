@@ -3,7 +3,7 @@ extends AudioStreamPlayer
 @export_category("Values")
 @export var volume: float
 
-const SORCERER_TRACK = preload("res://Music/SFX_battle_theme_sorcerers.wav")
+var sorcerer_track = load("res://Music/SFX_battle_theme_sorcerers.wav")
 
 var playback = 0
 @onready var player = get_tree().root.get_child(0).get_node("Player/PlayerBody")
@@ -24,8 +24,8 @@ func _process(delta: float):
 	if not playing:
 		play(playback)
 	
-	if player.health < 100 and stream != SORCERER_TRACK:
-		stream = SORCERER_TRACK
+	if player.health < 100 and stream != sorcerer_track:
+		stream = sorcerer_track
 		play(playback)
 		
 		var samples = stream.get_length()*stream.mix_rate
