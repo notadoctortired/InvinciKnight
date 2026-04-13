@@ -9,7 +9,7 @@ func _ready():
 	
 func _process(delta: float):
 	if visible:
-		rotation.y += 1
+		rotation.y += 20*delta
 	if not visible:
 		rotation.y = 0
 	

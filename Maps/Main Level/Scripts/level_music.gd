@@ -22,6 +22,9 @@ func _process(delta: float):
 	if playing:
 		playback = get_playback_position()
 	
+	if not playing:
+		play(playback)
+	
 	if player.health < 100 and stream != SORCERER_TRACK:
 		stream = SORCERER_TRACK
 		play(playback)
