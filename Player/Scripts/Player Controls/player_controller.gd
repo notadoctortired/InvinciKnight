@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 @export_category("Player Values")
-@export var health: float
 @export var speed: float
 @export var sfx_variance_min: float
 @export var sfx_variance_max: float
+
+var health = 100
 
 @export_category("Attack Values")
 @export var damage_mult: float

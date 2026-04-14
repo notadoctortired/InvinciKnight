@@ -43,7 +43,6 @@ size = Vector3(10, 10, 1)
 [node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=580162055]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_l8h54")
-health = 100.0
 speed = 7.0
 sfx_variance_min = -0.15
 sfx_variance_max = 0.15
