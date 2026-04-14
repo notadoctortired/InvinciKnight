@@ -40,7 +40,6 @@ light_data = ExtResource("2_4kbal")
 
 [node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("1_nmidp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-round_length = 125.0
 
 [node name="BoundingBox" type="StaticBody3D" parent="." unique_id=1211270161]
 
