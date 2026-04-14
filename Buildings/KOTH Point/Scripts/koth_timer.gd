@@ -1,7 +1,6 @@
 extends StaticBody3D
 
-@export_category("Round Variables")
-@export var round_length: float
+var round_length = 125
 
 @onready var timer = $Timer
 @onready var root = get_tree().root.get_child(0)

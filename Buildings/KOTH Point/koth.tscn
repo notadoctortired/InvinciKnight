@@ -41,7 +41,6 @@ radius = 7.0
 
 [node name="KOTH" type="StaticBody3D" unique_id=1872317103]
 script = ExtResource("1_12cdk")
-round_length = 125.0
 
 [node name="Base1" type="CollisionShape3D" parent="." unique_id=253822014]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.1, 0, 0.10000001)
@@ -79,8 +78,6 @@ mesh = SubResource("PrismMesh_3yu1c")
 
 [node name="KOTHArea" type="Area3D" parent="." unique_id=1557360487]
 script = ExtResource("2_3yu1c")
-progress_total = 170.0
-progress_mult = 0.01
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KOTHArea" unique_id=894227305]
 shape = SubResource("SphereShape3D_3yu1c")

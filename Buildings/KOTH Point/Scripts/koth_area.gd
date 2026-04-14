@@ -1,8 +1,7 @@
 extends Area3D
 
-@export_category("Progress Variables")
-@export var progress_total: float
-@export var progress_mult: float
+var progress_total = 170
+var progress_mult = 0.01
 
 var current_progress = 0
 
