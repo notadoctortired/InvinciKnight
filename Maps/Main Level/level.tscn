@@ -38,6 +38,9 @@ bake_mask = 4294443007
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=549472412]
 light_data = ExtResource("2_4kbal")
 
+[node name="Player" parent="." unique_id=1806675999 instance=ExtResource("2_ecqro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5000001, 3)
+
 [node name="KOTH" parent="." unique_id=1872317103 instance=ExtResource("1_nmidp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
@@ -66,9 +69,6 @@ mesh = SubResource("BoxMesh_5xgho")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1137832729]
 shape = SubResource("BoxShape3D_u52ul")
-
-[node name="Player" parent="." unique_id=1806675999 instance=ExtResource("2_ecqro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5000001, 3)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1039218464]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 5, 0)

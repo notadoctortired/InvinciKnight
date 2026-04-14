@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var sfx_variance_min: float
 @export var sfx_variance_max: float
 
-var health = 100
+@onready var health = 100.0
 
 @export_category("Attack Values")
 @export var damage_mult: float
@@ -34,6 +34,8 @@ var walking_playback = 0
 @onready var animation_player = meshes.get_node("PlayerModel/AnimationPlayer")
 var anim: Animation
 
+var dying = false
+
 func _ready():
 	# Default Anim Player settings on load
 	animation_player.playback_default_blend_time = .3
@@ -49,10 +51,10 @@ func _ready():
 	walking_sfx.stream.loop = true
 
 func _physics_process(delta: float) -> void:
-	if health <= 0:
+	if health <= 0 and not dying:
 		kill_actor()
 
-	if health < 100:
+	if health < 100 and not dying:
 		health += 0.02
 	
 	healthbar.value = lerp(healthbar.value, health, 0.4)
@@ -145,4 +147,5 @@ func hide_attacks():
 	crossbow.visible = false
 
 func kill_actor():
+	dying = true
 	get_tree().change_scene_to_file("res://Maps/Menus/death.tscn")

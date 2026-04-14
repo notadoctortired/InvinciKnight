@@ -20,6 +20,9 @@ func _ready() -> void:
 	progress_bar.max_value = progress_total
 	
 func _physics_process(delta: float):
+	print(progress_bar)
+	progress_bar = player.get_node("PlayerUI/CaptureProgress")
+	
 	if enemies.size() > 0:
 		current_progress += progress_mult*enemies.size()
 		

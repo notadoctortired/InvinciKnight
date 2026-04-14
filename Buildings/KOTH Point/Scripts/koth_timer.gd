@@ -17,6 +17,7 @@ func _ready():
 	timerUI.text = "Time Remaining: " + str(int(round_length))
 
 func _physics_process(delta: float):
+	UI = root.get_node("Player/PlayerBody/PlayerUI") # Godot web build is killing me
 	var timerUI = UI.get_node("RoundTimer")
 	
 	if round_length > 0:
