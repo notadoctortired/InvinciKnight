@@ -9,7 +9,7 @@ extends CharacterBody3D
 var target_pos = null
 
 # Parent Node Variables
-@onready var root = get_tree().root.get_child(0)
+@onready var root = get_tree().get_current_scene()
 @onready var player = root.get_node("Player/PlayerBody")
 
 # SFX Variables

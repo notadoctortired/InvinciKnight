@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bmw6rn2m425ey" path="res://Fonts/pixel_operator/PixelOperatorHB.ttf" id="1_y6lkb"]
 [ext_resource type="FontFile" uid="uid://ok152dfg4vxq" path="res://Fonts/pixel_operator/PixelOperatorMonoHB.ttf" id="2_y6lkb"]
+[ext_resource type="Script" uid="uid://qhlax625v0" path="res://Maps/Menus/button_UI.gd" id="3_3txtw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_guw0i"]
 font = ExtResource("1_y6lkb")
@@ -66,3 +67,11 @@ text = "Reload Page to Restart"
 label_settings = SubResource("LabelSettings_3txtw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RestartGame" type="Button" parent="." unique_id=128178294]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 54.0
+offset_right = 284.0
+offset_bottom = 94.0
+script = ExtResource("3_3txtw")

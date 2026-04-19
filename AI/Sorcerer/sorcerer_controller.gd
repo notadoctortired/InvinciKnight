@@ -8,7 +8,7 @@ extends CharacterBody3D
 var move_target_pos = Vector3(0,0,0)
 
 @onready var navigation_agent = $NavRoot/NavigationAgent3D
-@onready var scene_root = get_tree().root.get_child(0)
+@onready var scene_root = get_tree().get_current_scene()
 @onready var player = scene_root.get_node("Player/PlayerBody")
 
 var point = null
@@ -72,7 +72,7 @@ func spawn_attack():
 		var instance = scene.instantiate()
 		
 		instance.position = spawn_location
-		get_tree().root.add_child(instance)
+		get_tree().get_current_scene().add_child(instance)
 	
 func damage(dmg):
 	health -= dmg
