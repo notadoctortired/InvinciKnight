@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity != Vector3.ZERO:
 		meshes.rotation.y = atan2(velocity.z,-velocity.x)
-	
+
 	if velocity != Vector3.ZERO and not walking_sfx.playing:
 		walking_sfx.play(walking_playback)
 		
@@ -133,6 +133,16 @@ func swing_attack():
 	
 func crossbow_attack():
 	if not crossbow.visible:
+		var camera = get_viewport().get_camera_3d()
+		var mouse_pos = get_viewport().get_mouse_position()
+		var origin = camera.project_ray_origin(mouse_pos)
+		var normal = camera.project_ray_normal(mouse_pos)
+		
+		var result = camera.raycast(origin,normal,20000)
+		
+		meshes.look_at(result.position)
+		meshes.rotation.x = clampf(meshes.rotation.x,0,0)
+		
 		crossbow.fire_arrows()
 		crossbow.visible = true
 	

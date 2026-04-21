@@ -48,7 +48,7 @@ sfx_variance_min = -0.15
 sfx_variance_max = 0.15
 damage_mult = 2.0
 slash_cooldown = 0.5
-crossbow_cooldown = 1.0
+crossbow_cooldown = 1.5
 
 [node name="CameraSocket" type="Node3D" parent="PlayerBody" unique_id=1018338127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -64,6 +64,8 @@ transform = Transform3D(-0.06, 0, -9.059748e-09, 0, 0.06, 0, 9.059748e-09, 0, -0
 
 [node name="Crossbow" parent="PlayerBody/Meshes" unique_id=1755181535 instance=ExtResource("2_gwnis")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0597974e-08, 0.6, -0.70000005)
+arrows = 3
+firing_arc = 0.3
 
 [node name="SlashArea" parent="PlayerBody" unique_id=2015310752 instance=ExtResource("2_btcbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)

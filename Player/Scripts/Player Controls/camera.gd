@@ -24,3 +24,12 @@ func _process(delta: float):
 		
 	if target_look != null:
 		look_at(target_look.global_position)
+		
+func raycast(origin: Vector3, normal: Vector3, ray_length: float):
+	var end = origin + normal * ray_length
+		
+	var space_state := get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(origin, end)
+	var result := space_state.intersect_ray(query)
+	
+	return result

@@ -20,7 +20,7 @@ size = Vector3(0.6, 2.6000001, 1)
 motion_mode = 1
 script = ExtResource("1_baoto")
 speed = 1000.0
-damage = 20.0
+damage = 50.0
 despawn_time = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=901654022]

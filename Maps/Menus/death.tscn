@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bmw6rn2m425ey" path="res://Fonts/pixel_operator/PixelOperatorHB.ttf" id="1_1ww5u"]
 [ext_resource type="FontFile" uid="uid://ok152dfg4vxq" path="res://Fonts/pixel_operator/PixelOperatorMonoHB.ttf" id="2_1ww5u"]
+[ext_resource type="Script" uid="uid://qhlax625v0" path="res://Maps/Menus/button_UI.gd" id="2_3c2gf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_guw0i"]
 font = ExtResource("1_1ww5u")
@@ -10,9 +11,9 @@ shadow_size = 12
 shadow_color = Color(0, 0, 0, 0.7254902)
 shadow_offset = Vector2(3, 3)
 
-[sub_resource type="LabelSettings" id="LabelSettings_3c2gf"]
+[sub_resource type="LabelSettings" id="LabelSettings_041cg"]
 font = ExtResource("2_1ww5u")
-font_size = 25
+font_size = 30
 
 [node name="Death" type="Control" unique_id=589828803]
 layout_mode = 3
@@ -39,9 +40,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -319.0
-offset_top = -108.0
+offset_top = -241.0
 offset_right = 319.0
-offset_bottom = 50.0
+offset_bottom = -83.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "You lose!"
@@ -49,20 +50,35 @@ label_settings = SubResource("LabelSettings_guw0i")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ReloadNotice" type="Label" parent="." unique_id=1015974833]
+[node name="RestartGame" type="Button" parent="." unique_id=427277553]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -319.0
-offset_top = -22.0
-offset_right = 319.0
-offset_bottom = 136.0
+offset_left = -108.5
+offset_top = 90.5
+offset_right = 108.5
+offset_bottom = 153.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Reload Page to Restart"
-label_settings = SubResource("LabelSettings_3c2gf")
+script = ExtResource("2_3c2gf")
+
+[node name="Label" type="Label" parent="RestartGame" unique_id=88258247]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -27.5
+offset_right = 102.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+label_settings = SubResource("LabelSettings_041cg")
 horizontal_alignment = 1
 vertical_alignment = 1

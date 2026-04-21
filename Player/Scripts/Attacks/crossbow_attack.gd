@@ -31,4 +31,4 @@ func fire_arrows():
 		instance.global_position = spawn_location
 		instance.rotation.y = meshes.rotation.y-deg_to_rad(90)-current_arc
 		
-		get_tree().root.add_child(instance)
+		get_tree().get_current_scene().add_child(instance)
