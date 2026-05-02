@@ -7,7 +7,10 @@ extends CharacterBody3D
 var move_target_pos = Vector3(0,0,0)
 
 @onready var navigation_agent = $NavRoot/NavigationAgent3D
-@onready var root = get_tree().root.get_child(0)
+@onready var scene_root = get_tree().get_current_scene()
+
+var nav_points = null
+var point = null
 
 var randomisation = randf_range(-1,1)
 
@@ -17,11 +20,11 @@ func _ready():
 	
 	actor_setup.call_deferred()
 	
-	var koth = root.get_node("KOTH")
+	var koth = scene_root.get_node("KOTH")
 	
 	if koth != null:
-		var nav_points = koth.get_node("NavPoints").get_children()
-		var point = randi_range(0,nav_points.size()-1) # Reduce by one to correct index
+		nav_points = koth.get_node("NavPoints").get_children()
+		point = randi_range(0,nav_points.size()-1) # Reduce by one to correct index
 		
 		move_target_pos = nav_points[point].global_position
 		
@@ -52,8 +55,8 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
-	look_at(move_target_pos)
+	
+	look_at(move_target_pos, Vector3.UP,true)
 	
 	move_and_slide()
 
