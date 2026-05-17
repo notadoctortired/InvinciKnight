@@ -58,7 +58,7 @@ func _physics_process(delta):
 			velocity += get_gravity() * delta
 		if is_instance_valid(player):
 			look_at(player.global_position)
-			rotation.y = clamp(rotation.z,0,0)
+			rotation.z = clamp(rotation.y,0,0)
 		
 		move_and_slide()
 
