@@ -19,19 +19,21 @@ extends Node3D
 # Separate spawn points for sorcerers
 @onready var sorcerer_spawn_points = get_parent().get_node("SorcererSpawnPoints")
 
+# Pause spawning
+var pause: bool = false
+
 func _ready():
 	pass
 
 func _process(delta: float):
-	if peasant_timer <= 0:
-		spawn_peasant()
-	else:
-		peasant_timer -= 1*delta
-	
-	if sorcerer_timer <= 0:
-		spawn_sorcerer()
-	else:
-		sorcerer_timer -= 1*delta
+	if not pause:
+		if peasant_timer <= 0:
+			spawn_peasant()
+		else:
+			peasant_timer -= 1*delta
+		
+		if sorcerer_timer <= 0:
+			spawn_sorcerer()
 
 func spawn_peasant():
 	var spawn_location = randi_range(0,get_children().size()-1)

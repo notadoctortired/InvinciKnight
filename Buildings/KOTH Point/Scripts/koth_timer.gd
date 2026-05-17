@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-var round_length = 125
+@export var round_length = 125
 
 @onready var timer = $Timer
 @onready var root = get_tree().root.get_child(0)
